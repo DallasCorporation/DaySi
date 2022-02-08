@@ -1,23 +1,34 @@
 import React from 'react';
 import {SafeAreaView, Text, View, StyleSheet, ScrollView} from 'react-native';
+import {cultured} from '../../../constants/theme';
+import ProfileHeader from './ProfileHeader';
 
 const Profile = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView >
-      <View style={{borderColor: 'black', borderWidth: 1, flex:1}}>
+      <ScrollView style={styles.container}>
+        <View>
+          <ProfileHeader name="Props" services={1} kpi={0}/>
+        </View>
+        <View style={{backgroundColor: 'white', height: 200}}>
           <Text style={styles.text}>Page content</Text>
         </View>
-        <View style={{borderColor: 'black', borderWidth: 1, flex: 2}}>
+        <View style={{borderColor: 'black', height: 200}}>
           <Text style={styles.text}>Page content</Text>
         </View>
-        <View style={{borderColor: 'black', borderWidth: 1, flex: 3}}>
+        <View
+          style={{
+            borderBottomColor: 'rgba(0, 0, 0, 0.2);',
+            borderBottomWidth: 1,
+          }}
+        />
+        <View style={{borderColor: 'black', height: 200}}>
           <Text style={styles.text}>Page content</Text>
         </View>
-        <Text style={styles.text}>Page content</Text>
-        <Text style={styles.text}>Page content</Text>
-        <Text style={styles.text}>Page content</Text>
-        <Text style={styles.text}>Page content</Text>
+
+        <View style={{borderColor: 'black', height: 200}}>
+          <Text style={styles.text}>Page content</Text>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -25,6 +36,7 @@ const Profile = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: cultured,
   },
   text: {
     fontSize: 25,

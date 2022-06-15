@@ -1,9 +1,11 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Loading from '../Loading';
 import React from 'react';
 import Profile from '../Screen/Profile/Profile';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Search from '../Screen/Search';
+import { StyleSheet } from 'react-native';
+import Home from '../Screen/Home/Home';
+
 Ionicons.loadFont();
 const Tab = createBottomTabNavigator();
 
@@ -17,16 +19,17 @@ const MyTabs = () => {
         headerShown: false,
         tabBarStyle: {
           backgroundColor: 'black',
+          height:90
         },
       }}>
       <Tab.Screen
         name="Home"
-        component={Loading}
+        component={Home}
         options={{
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <Ionicons
               name={focused ? 'home' : 'home-outline'}
-              style={{color: focused ? '#FFFFFF' : '#86888D'}}
+              style={styles(focused).iconColor}
               size={25}
             />
           ),
@@ -36,37 +39,25 @@ const MyTabs = () => {
         name="Near Me"
         component={Loading}
         options={{
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <Ionicons
               name={focused ? 'earth' : 'earth-outline'}
               size={25}
-              style={{color: focused ? '#FFFFFF' : '#86888D'}}
+              style={styles(focused).iconColor}
             />
           ),
         }}
       />
-      <Tab.Screen
-        name="Search"
-        component={Search}
-        options={{
-          tabBarIcon: ({focused}) => (
-            <Ionicons
-              name={focused ? 'search' : 'search-outline'}
-              size={25}
-              style={{color: focused ? '#FFFFFF' : '#86888D'}}
-            />
-          ),
-        }}
-      />
+      
       <Tab.Screen
         name="Profile"
         component={Profile}
         options={{
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <Ionicons
               name={focused ? 'person-circle' : 'person-circle-outline'}
               size={25}
-              style={{color: focused ? '#FFFFFF' : '#86888D'}}
+              style={styles(focused).iconColor}
             />
           ),
         }}
@@ -74,5 +65,12 @@ const MyTabs = () => {
     </Tab.Navigator>
   );
 };
+
+const styles = (focused) => StyleSheet.create({
+  iconColor: {
+    color: focused ? '#FFFFFF' : '#86888D',
+  },
+});
+
 
 export default MyTabs;

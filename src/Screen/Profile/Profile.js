@@ -8,7 +8,7 @@ const Profile = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.container}>
         <View>
-          <ProfileHeader name="Props" services={1} kpi={0}/>
+          <ProfileHeader name="Props" services={1} kpi={0} />
         </View>
         <View style={{backgroundColor: 'white', height: 200}}>
           <Text style={styles.text}>Page content</Text>

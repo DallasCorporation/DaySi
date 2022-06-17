@@ -5,6 +5,7 @@ import Profile from '../Screen/Profile/Profile';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet } from 'react-native';
 import Home from '../Screen/Home/Home';
+import { mainGreen } from '../../constants/theme';
 
 Ionicons.loadFont();
 const Tab = createBottomTabNavigator();
@@ -18,8 +19,8 @@ const MyTabs = () => {
         tabBarActiveTintColor: '#FFFFFF',
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: 'black',
-          height:90
+          backgroundColor: mainGreen,
+          height: 90
         },
       }}>
       <Tab.Screen
@@ -48,7 +49,7 @@ const MyTabs = () => {
           ),
         }}
       />
-      
+
       <Tab.Screen
         name="Profile"
         component={Profile}

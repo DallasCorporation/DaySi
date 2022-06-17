@@ -5,6 +5,7 @@ export const cultured = '#F9F9F9';
 export const silver = '#AAAAAC';
 export const gray = '#60605F';
 export const jet = '#3D3C3D';
+export const mainGreen = '#005B4A';
 
 export const windowWidth = Dimensions.get('window').width;
 export const windowHeight = Dimensions.get('window').height;

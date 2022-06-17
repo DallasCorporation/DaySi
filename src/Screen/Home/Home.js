@@ -38,7 +38,7 @@ const Home = () => {
                 <Text style={{ height: 110 }}> </Text>
                 <Text style={styles().titleHome}>Bentornato, osvaldo!</Text>
                 <Text style={styles().subtitleHome}>Stai cercando un servizio?</Text>
-                <ScrollView horizontal3>
+                <ScrollView horizontal>
                     {array.map(el =>
                         <TouchableOpacity style={styles().containerHome}>
                             <View style={styles().buttonHome}>

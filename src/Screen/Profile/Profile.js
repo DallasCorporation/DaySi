@@ -1,13 +1,14 @@
 import React from 'react';
 import {SafeAreaView, Text, View, StyleSheet, ScrollView} from 'react-native';
-import {cultured, mainGreen} from '../../../constants/theme';
-import ProfileHeader from './ProfileHeader';
+import {cultured, mainGreen} from '../../constants/theme';
+import { logo } from '../../constants/images';
+
 
 const Profile = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.container}>
-       
+       <View></View>
       </ScrollView>
     </SafeAreaView>
   );

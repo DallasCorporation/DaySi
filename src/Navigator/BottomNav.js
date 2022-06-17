@@ -2,12 +2,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Loading from '../Loading';
 import React from 'react';
 import Profile from '../Screen/Profile/Profile';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/AntDesign';
 import { StyleSheet } from 'react-native';
 import Home from '../Screen/Home/Home';
-import { mainGreen } from '../../constants/theme';
+import Categories from '../Screen/Categories/Categories';
+import { mainGreen } from '../constants/theme';
 
-Ionicons.loadFont();
+Icon.loadFont();
 const Tab = createBottomTabNavigator();
 
 const MyTabs = () => {
@@ -18,9 +19,9 @@ const MyTabs = () => {
         tabBarInactiveTintColor: '#86888D',
         tabBarActiveTintColor: '#FFFFFF',
         headerShown: false,
+        tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: mainGreen,
-          height: 90
         },
       }}>
       <Tab.Screen
@@ -28,8 +29,8 @@ const MyTabs = () => {
         component={Home}
         options={{
           tabBarIcon: ({ focused }) => (
-            <Ionicons
-              name={focused ? 'home' : 'home-outline'}
+            <Icon
+              name={focused ? 'home' : 'home'}
               style={styles(focused).iconColor}
               size={25}
             />
@@ -38,11 +39,11 @@ const MyTabs = () => {
       />
       <Tab.Screen
         name="Near Me"
-        component={Loading}
+        component={Categories}
         options={{
           tabBarIcon: ({ focused }) => (
-            <Ionicons
-              name={focused ? 'earth' : 'earth-outline'}
+            <Icon
+              name={focused ? 'home' : 'home'}
               size={25}
               style={styles(focused).iconColor}
             />
@@ -55,8 +56,22 @@ const MyTabs = () => {
         component={Profile}
         options={{
           tabBarIcon: ({ focused }) => (
-            <Ionicons
-              name={focused ? 'person-circle' : 'person-circle-outline'}
+            <Icon
+              name={focused ? 'home' : 'home'}
+              size={25}
+              style={styles(focused).iconColor}
+            />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Loading"
+        component={Loading}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Icon
+              name={focused ? 'home' : 'home'}
               size={25}
               style={styles(focused).iconColor}
             />

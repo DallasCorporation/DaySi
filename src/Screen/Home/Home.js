@@ -1,10 +1,11 @@
 import React from 'react';
 import { SafeAreaView, Text, View, StyleSheet, ScrollView, Image, TouchableOpacity, Button } from 'react-native';
-import { image_1 } from '../../../constants/images';
-import { image_2 } from '../../../constants/images';
-import { image_3 } from '../../../constants/images';
-import { image_4 } from '../../../constants/images';
-import { cultured, mainGreen, windowHeight, windowWidth } from '../../../constants/theme';
+import { image_1 } from '../../constants/images';
+import { image_2 } from '../../constants/images';
+import { image_3 } from '../../constants/images';
+import { image_4 } from '../../constants/images';
+
+import { cultured, mainGreen, windowHeight, windowWidth } from '../../constants/theme';
 
 const Home = () => {
 
@@ -40,7 +41,7 @@ const Home = () => {
                 <Text style={styles().subtitleHome}>Stai cercando un servizio?</Text>
                 <ScrollView horizontal>
                     {array.map(el =>
-                        <TouchableOpacity style={styles().containerHome}>
+                        <TouchableOpacity key={el} style={styles().containerHome}>
                             <View style={styles().buttonHome}>
                                 <Text></Text>
                                 <Text></Text>
@@ -50,10 +51,9 @@ const Home = () => {
                         </TouchableOpacity>
                     )}
                 </ScrollView>
-
                 <ScrollView>
                     {cat.map(el =>
-                        <View style={{ width: windowWidth - 50, backgroundColor: 'white', height: 165, alignSelf: 'center', borderRadius: 20, marginBottom: 20, padding: 25,flexDirection:'row' }}>
+                        <View key={el.name} style={{ width: windowWidth - 50, backgroundColor: 'white', height: 165, alignSelf: 'center', borderRadius: 20, marginBottom: 20, padding: 25,flexDirection:'row', elevation:10, shadowColor:"white" }}>
                             <View>
                                 <Text style={{ fontSize: 25, color: '#9C841C8C', fontWeight: 'bold' }}>{el.name}</Text>
                                 <Text style={{ fontSize: 15, color: 'black' }}>{el.desc}</Text>
@@ -62,7 +62,7 @@ const Home = () => {
                                 </TouchableOpacity>
                             </View>
                             <View>
-                                <Image source={el.img} style={{ width: 170, height: 170 }} ></Image>
+                                <Image source={el.img} style={{ width: 140, height: 140}} ></Image>
                             </View>
                         </View>
                     )}
@@ -72,7 +72,6 @@ const Home = () => {
         </SafeAreaView>
     )
 }
-
 
 const styles = (props) => StyleSheet.create({
     container: {
@@ -103,8 +102,5 @@ const styles = (props) => StyleSheet.create({
         marginLeft: 25,
         marginBottom: 40,
     },
-
-
 });
-
 export default Home;

@@ -7,6 +7,7 @@ import { StyleSheet } from 'react-native';
 import Home from '../Screen/Home/Home';
 import Categories from '../Screen/Categories/Categories';
 import { mainGreen } from '../constants/theme';
+import Access from '../Access';
 
 Icon.loadFont();
 const Tab = createBottomTabNavigator();
@@ -22,6 +23,7 @@ const MyTabs = () => {
         tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: mainGreen,
+          height:60,
         },
       }}>
       <Tab.Screen
@@ -54,6 +56,20 @@ const MyTabs = () => {
       <Tab.Screen
         name="Profile"
         component={Profile}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Icon
+              name={focused ? 'home' : 'home'}
+              size={25}
+              style={styles(focused).iconColor}
+            />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Access"
+        component={Access}
         options={{
           tabBarIcon: ({ focused }) => (
             <Icon

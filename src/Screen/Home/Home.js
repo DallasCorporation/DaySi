@@ -9,7 +9,7 @@ import { cultured, mainGreen, windowHeight, windowWidth } from '../../constants/
 
 const Home = () => {
 
-    let array = ["Parrucchieri", "Estetista", "Yoga", "Vedi tutte", "Medico", "Armando"]
+    let array = ["Parrucchieri", "Estetista", "Yoga", "Personal\nTrainer", "Medico", "Mental\nCoach"]
     let cat = [
         {
             name: "Parrucchieri",
@@ -23,12 +23,12 @@ const Home = () => {
         },
         {
             name: "Yoga",
-            desc: "Ti si sono rotte le palle?\nNessun problema!",
+            desc: "Ti serve po' di \nginnastca rilassante",
             img: image_3,
         },
         {
             name: "Personal trainer",
-            desc: "Ti si sono rotte le palle?\nNessun problema!",
+            desc: "Vuoi un aiuto per \nmetterti in forma?",
             img: image_4,
         },
     ]
@@ -37,7 +37,7 @@ const Home = () => {
             <ScrollView style={styles().container} persistentScrollbar={true} >
 
                 <Text style={{ height: 110 }}> </Text>
-                <Text style={styles().titleHome}>Bentornato, osvaldo!</Text>
+                <Text style={styles().titleHome}>Bentornata, Margherita!</Text>
                 <Text style={styles().subtitleHome}>Stai cercando un servizio?</Text>
                 <ScrollView horizontal>
                     {array.map(el =>

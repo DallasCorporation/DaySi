@@ -36,7 +36,7 @@ const Categories = () => {
 
             <Text style={{ color: 'white', fontSize: 30, marginLeft: 25 }}>Categorie</Text>
             <View style={{ backgroundColor: 'white', margin: 25, height: 45, borderRadius: 10, marginBottom: 25 }}>
-                <Text style={{ fontSize: 16, color: 'black', textAlign: 'center', marginTop: 10 }}>Categorie trovate per: Bofogna</Text>
+                <Text style={{ fontSize: 16, color: 'black', textAlign: 'center', marginTop: 10 }}>Categorie trovate per: Bologna</Text>
             </View>
 
             <SafeAreaView style={{ flex: 1 }}>

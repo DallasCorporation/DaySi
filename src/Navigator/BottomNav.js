@@ -23,7 +23,7 @@ const MyTabs = () => {
         tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: mainGreen,
-          height:60,
+          height: 60,
         },
       }}>
       <Tab.Screen
@@ -66,7 +66,7 @@ const MyTabs = () => {
           ),
         }}
       />
-
+      {/*
       <Tab.Screen
         name="Access"
         component={Access}
@@ -94,6 +94,7 @@ const MyTabs = () => {
           ),
         }}
       />
+          */}
     </Tab.Navigator>
   );
 };

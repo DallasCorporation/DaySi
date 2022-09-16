@@ -53,7 +53,6 @@ const MyTabs = () => {
         options={{
           tabBarIcon: ({ focused }) => (
             <IconFont color={focused ? '#FFFFFF' : '#86888D'} name="i-shenhe" size={26} />
-
           ),
         }}
       />

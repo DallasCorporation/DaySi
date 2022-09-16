@@ -1,35 +1,35 @@
 import React from 'react';
-import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import IconFont from '../../iconfont';
 
-const ProfileHeader = ({...props}) => {
-  const {name, services, kpi}=props;
+const ProfileHeader = ({ ...props }) => {
+  const { name, services, kpi } = props;
   return (
-    <View style={{height: 230}}>
-      <View style={{flexDirection: 'row'}}>
+    <View style={{ height: 230 }}>
+      <View style={{ flexDirection: 'row' }}>
         <View style={styles.image}>
-          <Ionicons name={'person'} size={100} style={{color: '#000000'}} />
+          <IconFont color={'#86888D'} name="i-shenhe" size={26} />
         </View>
-        <View style={{marginHorizontal: 20, flex: 1}}>
-          <Text style={{marginTop: 20, fontSize: 24}}>{name}</Text>
+        <View style={{ marginHorizontal: 20, flex: 1 }}>
+          <Text style={{ marginTop: 20, fontSize: 24 }}>{name}</Text>
           <TouchableOpacity>
-            <Text style={{marginTop: 10}}>Edit Profile</Text>
+            <Text style={{ marginTop: 10 }}>Edit Profile</Text>
           </TouchableOpacity>
-          <View style={{marginTop: 22}}>
+          <View style={{ marginTop: 22 }}>
             <View style={styles.rowSpaced}>
               <Text>Services Used</Text>
-              <Text style={{fontWeight: '700'}}>{services}</Text>
+              <Text style={{ fontWeight: '700' }}>{services}</Text>
             </View>
-            <View style={[styles.rowSpaced, {marginTop: 3}]}>
+            <View style={[styles.rowSpaced, { marginTop: 3 }]}>
               <Text>Other KPI</Text>
-              <Text style={{fontWeight: '700'}}>{kpi}</Text>
+              <Text style={{ fontWeight: '700' }}>{kpi}</Text>
             </View>
           </View>
         </View>
       </View>
       <TouchableOpacity style={styles.help}>
-        <Ionicons name={'help-circle'} size={24} style={{color: '#000000'}} />
-        <Text style={{fontSize: 16}}>Need Help? Ask Here</Text>
+        <IconFont color={'#86888D'} name="i-shenhe" size={26} />
+        <Text style={{ fontSize: 16 }}>Need Help? Ask Here</Text>
       </TouchableOpacity>
     </View>
   );

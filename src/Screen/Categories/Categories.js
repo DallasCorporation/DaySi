@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
+import api from '../../api';
 import { mainGreen } from '../../constants/theme';
 
 const Categories = () => {
+    useEffect(() => {
+        api.category.getAll().then()
+    }, [])
+    
     let cate = [
         {
             name: "Parrucchiere",

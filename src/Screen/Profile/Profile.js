@@ -2,13 +2,16 @@ import React from 'react';
 import {SafeAreaView, Text, View, StyleSheet, ScrollView} from 'react-native';
 import {cultured, mainGreen} from '../../constants/theme';
 import { logo } from '../../constants/images';
+import ProfileHeader from "./ProfileHeader"
 
 
 const Profile = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.container}>
-       <View></View>
+       <View>
+        <ProfileHeader/>
+       </View>
       </ScrollView>
     </SafeAreaView>
   );

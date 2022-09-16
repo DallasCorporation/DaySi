@@ -36,7 +36,7 @@ const Home = () => {
         <SafeAreaView style={styles().container}>
             <ScrollView style={styles().container} persistentScrollbar={true} >
                 <Text style={{}}> </Text>
-                <Text style={styles().titleHome}>Bentornata, Margherita!</Text>
+                <Text style={styles().titleHome}>Hey Margherita👋</Text>
                 <Text style={styles().subtitleHome}>Stai cercando un servizio?</Text>
                 <ScrollView horizontal>
                     {array.map(el =>

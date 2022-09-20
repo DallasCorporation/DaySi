@@ -7,7 +7,7 @@ const Categories = () => {
     useEffect(() => {
         api.category.getAll().then()
     }, [])
-    
+
     let cate = [
         {
             name: "Parrucchiere",
@@ -27,19 +27,10 @@ const Categories = () => {
         {
             name: "Estetista",
         },
-        {
-            name: "a",
-        },
-        {
-            name: "v",
-        },
     ]
     return (
-
-        <ScrollView style={styles.container}>
-            <Text style={{ height: 110 }}> </Text>
-
-            <Text style={{ color: 'white', fontSize: 30, marginLeft: 25 }}>Categorie</Text>
+        <SafeAreaView style={styles.container}>
+            <Text style={{  fontSize: 30, marginLeft: 25 }}>Categorie</Text>
             <View style={{ backgroundColor: 'white', margin: 25, height: 45, borderRadius: 10, marginBottom: 25 }}>
                 <Text style={{ fontSize: 16, color: 'black', textAlign: 'center', marginTop: 10 }}>Categorie trovate per: Bologna</Text>
             </View>
@@ -54,7 +45,9 @@ const Categories = () => {
                     renderItem={(el) =>
                         <TouchableOpacity style={{ flexDirection: 'row', flex: 1, marginBottom: 25 }}>
 
-                            <View style={{ width: 153, height: 130, flexDirection: 'row', backgroundColor: 'white', borderRadius: 20, elevation: 100, shadowOpacity: '100', shadowColor: "black", }}>
+                            <View style={{
+                                width: 153, height: 130, flexDirection: 'row', backgroundColor: 'white', borderRadius: 20,
+                            }}>
                                 <View>
                                     <View style={{ marginLeft: 14, marginRight: 14, marginTop: 10, width: 125, height: 93, backgroundColor: '#DAB701', borderRadius: 10 }} />
                                     <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#000', textAlign: 'center' }}>{el.item.name}</Text>
@@ -64,7 +57,8 @@ const Categories = () => {
                     }
                 />
             </SafeAreaView>
-        </ScrollView>
+        </SafeAreaView>
+
     );
 };
 const styles = StyleSheet.create({

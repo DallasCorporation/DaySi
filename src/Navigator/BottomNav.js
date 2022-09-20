@@ -1,72 +1,61 @@
+/* eslint-disable react-native/no-inline-styles */
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import Profile from '../Screen/Profile/Profile';
 import Icon from 'react-native-vector-icons/AntDesign';
-import { StyleSheet } from 'react-native';
 import Home from '../Screen/Home/Home';
 import Categories from '../Screen/Categories/Categories';
 import { mainGreen } from '../constants/theme';
+import TabBar from '../TabBar/TabBar';
+import { View } from 'react-native';
 import Access from '../Access';
-import IconFont from '../iconfont';
+import { useNavigation } from '@react-navigation/native';
 
 Icon.loadFont();
-const Tab = createBottomTabNavigator();
 
 const MyTabs = () => {
+  const Tab = createBottomTabNavigator();
+  const navigation = useNavigation();
   return (
-    <Tab.Navigator
-      initialRouteName="Home"
-      screenOptions={{
-        tabBarInactiveTintColor: '#86888D',
-        tabBarActiveTintColor: '#FFFFFF',
-        tabBarLabelStyle:{
-          fontSize:14,
-        },
-        headerShown: false,
-        tabBarStyle: {
-          backgroundColor: mainGreen,
-          height: 80,
-        },
-      }}>
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <IconFont color={focused ? '#FFFFFF' : '#86888D'} name="i-dianpu" size={26} />
-          ),
+    <View style={{
+      flex: 1,
+      backgroundColor: mainGreen,
+      justifyContent: 'flex-end',
+    }}>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarInactiveTintColor: '#86888D',
+          tabBarActiveTintColor: '#FFFFFF',
+          tabBarLabelStyle: {
+            fontSize: 14,
+          },
+          headerShown: false,
+          tabBarStyle: {
+            height: 0,
+          },
         }}
-      />
-      <Tab.Screen
-        name="Near Me"
-        component={Categories}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <IconFont color={focused ? '#FFFFFF' : '#86888D'} name="i-dingwei" size={26} />
-          ),
-        }}
-      />
+      >
+        <Tab.Screen name="Home" component={Home} options={{
+          abBarButton: () => null,
+          tabBarVisible: false,
+        }} />
+        <Tab.Screen name="Profile" component={Profile} options={{
+          abBarButton: () => null,
+          tabBarVisible: false,
+        }} />
+        <Tab.Screen name="Categories" component={Categories} options={{
+          abBarButton: () => null,
+          tabBarVisible: false,
+        }} />
+        <Tab.Screen name="Maps" component={Access} options={{
+          abBarButton: () => null,
+          tabBarVisible: false,
+        }} />
 
-      <Tab.Screen
-        name="Profile"
-        component={Profile}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <IconFont color={focused ? '#FFFFFF' : '#86888D'} name="i-shenhe" size={26} />
-          ),
-        }}
-      />
-
-      {/* <Tab.Screen
-        name="Access"
-        component={Access}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <IconFont color={focused ? '#FFFFFF' : '#86888D'} name="i-dianpu" size={26} />
-          ),
-        }}
-      /> */}
-    </Tab.Navigator>
+        {/* <Tab.Screen name="Root" component={Access} options={{ headerShown: false }} /> */}
+      </Tab.Navigator>
+      <TabBar navigation={navigation} />
+    </View>
   );
 };
 export default MyTabs;

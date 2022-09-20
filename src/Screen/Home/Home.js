@@ -5,37 +5,36 @@ import { image_2 } from '../../constants/images';
 import { image_3 } from '../../constants/images';
 import { image_4 } from '../../constants/images';
 
-import { mainGreen, windowWidth } from '../../constants/theme';
+import { mainGreen, white, windowWidth } from '../../constants/theme';
 
 const Home = () => {
 
-    let array = ["Parrucchieri", "Estetista", "Yoga", "Personal\nTrainer", "Medico", "Mental\nCoach"]
+    let array = ['Parrucchieri', 'Estetista', 'Yoga', 'Personal\nTrainer', 'Medico', 'Mental\nCoach'];
     let cat = [
         {
-            name: "Parrucchieri",
-            desc: "Hai bisogno di una\nspuntatina ai capelli?",
+            name: 'Parrucchieri',
+            desc: 'Hai bisogno di una\nspuntatina ai capelli?',
             img: image_1,
         },
         {
-            name: "Estetista",
-            desc: "Ti si sono rotte le unghie?\nNessun problema!",
+            name: 'Estetista',
+            desc: 'Ti si sono rotte le unghie?\nNessun problema!',
             img: image_2,
         },
         {
-            name: "Yoga",
+            name: 'Yoga',
             desc: "Ti serve po' di \nginnastca rilassante",
             img: image_3,
         },
         {
-            name: "Personal trainer",
-            desc: "Vuoi un aiuto per \nmetterti in forma?",
+            name: 'Personal trainer',
+            desc: 'Vuoi un aiuto per \nmetterti in forma?',
             img: image_4,
         },
-    ]
+    ];
     return (
         <SafeAreaView style={styles().container}>
             <ScrollView style={styles().container} persistentScrollbar={true} >
-                <Text style={{}}> </Text>
                 <Text style={styles().titleHome}>Hey Margherita👋</Text>
                 <Text style={styles().subtitleHome}>Stai cercando un servizio?</Text>
                 <ScrollView horizontal>
@@ -46,13 +45,13 @@ const Home = () => {
                                 <Text />
                                 <Text />
                             </View>
-                            <Text style={{ color: 'white', fontSize: 12, fontWeight: 'bold', textAlign: "center" }}>{el}</Text>
+                            <Text style={{ fontSize: 12, fontWeight: 'bold', textAlign: 'center' }}>{el}</Text>
                         </TouchableOpacity>
                     )}
                 </ScrollView>
                 <ScrollView>
                     {cat.map(el =>
-                        <View key={el.name} style={{ width: windowWidth - 50, backgroundColor: 'white', height: 165, alignSelf: 'center', borderRadius: 20, marginBottom: 20, padding: 25,flexDirection:'row', elevation:10, shadowColor:"white" }}>
+                        <View key={el.name} style={{ width: windowWidth - 50, backgroundColor: 'white', height: 165, alignSelf: 'center', borderRadius: 20, marginBottom: 20, padding: 25,flexDirection:'row', elevation:10, shadowColor:'white' }}>
                             <View>
                                 <Text style={{ fontSize: 25, color: '#9C841C8C', fontWeight: 'bold' }}>{el.name}</Text>
                                 <Text style={{ fontSize: 15, color: 'black' }}>{el.desc}</Text>
@@ -68,25 +67,21 @@ const Home = () => {
                 </ScrollView>
             </ScrollView>
         </SafeAreaView>
-    )
-}
+    );
+};
 
 const styles = (props) => StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: mainGreen,
+        backgroundColor: white,
     },
     titleHome: {
         marginLeft: 25,
         fontSize: 30,
-        // fontFamily: "Alegreya",
-        color: "white",
     },
     subtitleHome: {
         marginLeft: 25,
         fontSize: 22,
-        // fontFamily: "Alegreya",
-        color: 'rgba(255,255,255,0.7)',
         marginBottom: 30,
     },
     buttonHome: {

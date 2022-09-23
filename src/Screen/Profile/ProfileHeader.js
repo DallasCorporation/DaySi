@@ -27,7 +27,7 @@ const ProfileHeader = ({ handleClick, ...props }) => {
         </TouchableOpacity>
 
       </View>
-      <Text style={styles.placeholder}>Share a Little bit about yourself</Text>
+      <Text style={styles.placeholder}>Raccontaci un po' di te!</Text>
       <Input
         placeholder="Nome"
         value={name}

@@ -5,7 +5,7 @@ import { mainGreen } from '../../constants/theme';
 
 const Categories = () => {
     useEffect(() => {
-        api.category.getAll().then()
+        // api.category.getAll().then()
     }, [])
 
     let cate = [

@@ -1,45 +1,58 @@
 {
-  "name": "daysi",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint ."
-  },
-  "dependencies": {
-    "@expo-google-fonts/alegreya-sans": "^0.2.2",
-    "@react-native-community/masked-view": "^0.1.11",
-    "@react-navigation/bottom-tabs": "^6.2.0",
-    "@react-navigation/native": "^6.0.8",
-    "axios": "^0.26.1",
-    "d3-shape": "^3.1.0",
-    "react": "17.0.2",
-    "react-native": "0.67.2",
-    "react-native-gesture-handler": "^2.2.0",
-    "react-native-linear-gradient": "^2.5.6",
-    "react-native-reanimated": "^2.10.0",
-    "react-native-safe-area-context": "^3.3.2",
-    "react-native-screens": "^3.10.2",
-    "react-native-svg": "^12.4.4",
-    "react-native-vector-icons": "^9.0.0",
-    "styled-components": "^5.3.3"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.12.9",
-    "@babel/preset-env": "^7.19.1",
-    "@babel/runtime": "^7.12.5",
-    "@react-native-community/eslint-config": "^2.0.0",
-    "babel-jest": "^26.6.3",
-    "eslint": "7.14.0",
-    "jest": "^26.6.3",
-    "metro-react-native-babel-preset": "^0.66.2",
-    "react-native-iconfont-cli": "^2.2.4",
-    "react-test-renderer": "17.0.2"
-  },
-  "jest": {
-    "preset": "react-native"
-  }
+    "name": "daysi",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "android": "react-native run-android",
+        "ios": "react-native run-ios",
+        "start": "react-native start",
+        "test": "jest",
+        "lint": "eslint ."
+    },
+    "dependencies": {
+        "@eva-design/eva": "^2.1.1",
+        "@expo-google-fonts/alegreya-sans": "^0.2.2",
+        "@gorhom/bottom-sheet": "^4.4.5",
+        "@react-native-community/masked-view": "^0.1.11",
+        "@react-navigation/bottom-tabs": "^6.2.0",
+        "@react-navigation/native": "^6.0.8",
+        "@reduxjs/toolkit": "^1.8.5",
+        "@ui-kitten/components": "^5.1.2",
+        "@ui-kitten/eva-icons": "^5.1.2",
+        "antd-mobile-v5": "npm:antd-mobile@^5.23.0",
+        "axios": "^0.26.1",
+        "d3-shape": "^3.1.0",
+        "escape-string-regexp": "^5.0.0",
+        "react": "^17.0.2",
+        "react-dom": "^18.2.0",
+        "react-native": "0.67.2",
+        "react-native-gesture-handler": "^2.6.1",
+        "react-native-linear-gradient": "^2.5.6",
+        "react-native-reanimated": "^2.10.0",
+        "react-native-safe-area-context": "^3.3.2",
+        "react-native-screens": "^3.10.2",
+        "react-native-svg": "^12.4.4",
+
+        "react-native-svg-transformer": "^1.0.0",
+        "react-native-svg-uri": "^1.2.3",
+        "react-redux": "^8.0.4",
+        "react-spring-bottom-sheet": "^3.4.1",
+        "styled-components": "^5.3.3"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.12.9",
+        "@babel/preset-env": "^7.19.1",
+        "@babel/runtime": "^7.12.5",
+        "@react-native-community/eslint-config": "^2.0.0",
+        "babel-jest": "^26.6.3",
+        "babel-plugin-import-glob": "^2.0.0",
+        "eslint": "7.14.0",
+        "jest": "^26.6.3",
+        "metro-react-native-babel-preset": "^0.66.2",
+        "react-native-iconfont-cli": "^2.2.4",
+        "react-test-renderer": "17.0.2"
+    },
+    "jest": {
+        "preset": "react-native"
+    }
 }

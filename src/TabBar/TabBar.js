@@ -24,7 +24,7 @@ const tabs = [
     },
     {
         name: 'Account',
-        icon: 'i-shenhe',
+        icon: 'i-shouye',
         route: 'Profile',
     },
 ];

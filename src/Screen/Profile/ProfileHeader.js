@@ -1,36 +1,74 @@
-import React from 'react';
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import IconFont from '../../iconfont';
+import { Avatar, Text, Input, Layout, Button, Drawer, DrawerItem, Select, SelectItem } from '@ui-kitten/components';
+import AvatarIcon from '../../assets/avatars/Avatar-2.svg';
+import avatars, { SVGsArray } from '../../assets/exportAvatar';
 
-const ProfileHeader = ({ ...props }) => {
-  const { name, services, kpi } = props;
+const ProfileHeader = ({ handleClick, ...props }) => {
+  const { user } = props;
+  console.log(user);
+  const [name, setName] = useState(user.name);
+  const [surname, setSurname] = useState(user.surname);
+  const [phone, setPhone] = useState(user.phone);
+  const [value, setValue] = useState('');
+  const [edit, setEdit] = useState(true);
+
+  const renderAvatar = (Item) => <Item width={200} height={200} />;
+
   return (
-    <View style={{ height: 230 }}>
-      <View style={{ flexDirection: 'row' }}>
-        <View style={styles.image}>
-          <IconFont color={'#86888D'} name="i-shenhe" size={26} />
-        </View>
-        <View style={{ marginHorizontal: 20, flex: 1 }}>
-          <Text style={{ marginTop: 20, fontSize: 24 }}>{name}</Text>
-          <TouchableOpacity>
-            <Text style={{ marginTop: 10 }}>Edit Profile</Text>
-          </TouchableOpacity>
-          <View style={{ marginTop: 22 }}>
-            <View style={styles.rowSpaced}>
-              <Text>Services Used</Text>
-              <Text style={{ fontWeight: '700' }}>{services}</Text>
-            </View>
-            <View style={[styles.rowSpaced, { marginTop: 3 }]}>
-              <Text>Other KPI</Text>
-              <Text style={{ fontWeight: '700' }}>{kpi}</Text>
-            </View>
+    <View style={{ justifyContent: 'center' }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 32 }}>
+        <Avatar style={styles.avatar} size="giant" ImageComponent={() => renderAvatar(avatars[user.avatar])} />
+        <TouchableOpacity style={{ position: 'absolute', bottom: -20 }} onPress={() => handleClick()}>
+          <View style={{ borderRadius: 20, backgroundColor: 'black', padding: 10 }}>
+            <IconFont name={'i-bianxie'} color={'white'} size={25} />
           </View>
-        </View>
+        </TouchableOpacity>
+
       </View>
-      <TouchableOpacity style={styles.help}>
-        <IconFont color={'#86888D'} name="i-shenhe" size={26} />
-        <Text style={{ fontSize: 16 }}>Need Help? Ask Here</Text>
-      </TouchableOpacity>
+      <Text style={styles.placeholder}>Share a Little bit about yourself</Text>
+      <Input
+        placeholder="Nome"
+        value={name}
+        style={styles.input}
+        size="large"
+        disabled={edit}
+        label={'Nome'}
+        status="info"
+        accessoryLeft={<IconFont name={'i-shouye'} size={25} />}
+        onChangeText={(val) => setName(val)}
+      />
+      <Input
+        placeholder="Cognome"
+        value={surname}
+        style={styles.input}
+        size="large"
+        disabled={edit}
+        label={'Cognome'}
+        status="info"
+        accessoryLeft={<IconFont name={'i-shenhe'} size={25} />}
+        onChangeText={(val) => setPhone(val)}
+      />
+      <Input
+        placeholder="Numero di Telefono"
+        value={phone}
+        style={styles.input}
+        size="large"
+        disabled={edit}
+        label={'Numero di Telefono'}
+        status="info"
+        accessoryLeft={<IconFont name={'i-shenhe'} size={25} />}
+        onChangeText={(val) => setValue(val)}
+      />
+
+      <Button
+        size="large"
+        status="info"
+        appearance="outline"
+        accessoryLeft={<IconFont name={'i-shenhe'} size={25} color={'white'} />}
+        onPress={() => { setEdit(!edit); }} style={[styles.input, { borderRadius: 10 }]}>{edit ? 'Edit' : 'Update'}
+      </Button>
     </View>
   );
 };
@@ -55,6 +93,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     marginTop: 22,
+  },
+  avatar: {
+    width: 220,
+    height: 220,
+  },
+  input: {
+    marginTop: 15,
+    marginLeft: 20,
+    marginRight: 20,
+    borderRadius: 10,
+  },
+  placeholder: {
+    marginTop: 32, textAlign: 'center',
   },
 });
 

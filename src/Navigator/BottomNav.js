@@ -1,8 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Profile from '../Screen/Profile/Profile';
-import Icon from 'react-native-vector-icons/AntDesign';
 import Home from '../Screen/Home/Home';
 import Categories from '../Screen/Categories/Categories';
 import { mainGreen } from '../constants/theme';
@@ -11,7 +10,6 @@ import { View } from 'react-native';
 import Access from '../Access';
 import { useNavigation } from '@react-navigation/native';
 
-Icon.loadFont();
 
 const MyTabs = () => {
   const Tab = createBottomTabNavigator();

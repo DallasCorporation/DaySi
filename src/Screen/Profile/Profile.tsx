@@ -2,12 +2,12 @@ import React, { useRef, useState } from 'react';
 import { SafeAreaView, View, StyleSheet, ScrollView } from 'react-native';
 import ProfileHeader from './ProfileHeader';
 import ProfileDrawer from './ProfileDrawer';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../store/store';
 
 const Profile = () => {
-  const avatar = useSelector(state => state.user.avatar);
-  const user = useSelector(state => state.user);
-  const bottomSheetRef = useRef(null);
+  const avatar = useAppSelector((state) => state.user.avatar);
+  const user = useAppSelector((state) => state.user);
+  const bottomSheetRef = useRef<any>(null);
   const [status, setStatus] = useState(-1)
 
   const handleClick = () => {

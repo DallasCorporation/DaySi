@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { UserState } from '../interfaces/ReduxInterface';
+
 
 export const userSlice = createSlice({
   name: 'user',
@@ -7,7 +9,7 @@ export const userSlice = createSlice({
     surname: 'Dallas',
     name: 'Emanuele',
     phone: '3400981328',
-  },
+  } as UserState,
   reducers: {
     updateUser: (state, action) => {
       state.avatar = action.payload

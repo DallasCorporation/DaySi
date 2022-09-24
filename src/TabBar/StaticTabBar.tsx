@@ -5,7 +5,9 @@ const { width } = Dimensions.get('window');
 import IconFont from '../iconfont';
 
 export default class StaticTabBar extends React.PureComponent {
-    constructor(props) {
+    values: never[];
+    onPress: (index: any, route: any) => void;
+    constructor(props: any) {
         super(props);
         this.values = [];
         this.onPress = (index, route) => {

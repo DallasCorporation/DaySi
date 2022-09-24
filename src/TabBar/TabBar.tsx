@@ -31,11 +31,11 @@ const tabs = [
 const tabWidth = width / tabs.length;
 const backgroundColor = 'white';
 const getPath = () => {
-    const left = shape.line().x(d => d.x).y(d => d.y)([
+    const left = shape.line().x((d: { x: any; }) => d.x).y((d: { y: any; }) => d.y)([
         { x: 0, y: 0 },
         { x: width, y: 0 },
     ]);
-    const tab = shape.line().x(d => d.x).y(d => d.y).curve(shape.curveBasis)([
+    const tab = shape.line().x((d: { x: any; }) => d.x).y((d: { y: any; }) => d.y).curve(shape.curveBasis)([
         { x: width + tabWidth / 2 - 100, y: 0 },
         { x: width + tabWidth / 2 - 65 + -35, y: 0 },
         { x: width + tabWidth / 2 - 50 + 10, y: -6 },
@@ -45,7 +45,7 @@ const getPath = () => {
         { x: width + tabWidth / 2 + 65 - -35, y: 0 },
         { x: width + tabWidth / 2 + 100, y: 0 },
     ]);
-    const right = shape.line().x(d => d.x).y(d => d.y)([
+    const right = shape.line().x((d: { x: any; }) => d.x).y((d: { y: any; }) => d.y)([
         { x: width + tabWidth, y: 0 },
         { x: width * 2, y: 0 },
         { x: width * 2, y: height },

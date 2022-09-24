@@ -1,14 +1,24 @@
 import { View, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
-import BottomSheet from '@gorhom/bottom-sheet';
-import React, { useMemo } from 'react';
+import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
+import React, { Ref, useMemo } from 'react';
 import { Icon, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import IconFont from '../../iconfont';
 import avatars, { SVGsArray } from '../../assets/exportAvatar';
 import { useDispatch } from 'react-redux';
 import { updateAvatar } from '../../reducer/userSlice';
+import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
+
+interface ProfileDrawerProps {
+    bottomSheetRef: Ref<BottomSheetMethods>;
+    close: Function;
+    avatar: String;
+    status: number;
+    setStatus: Function;
+}
+
+const ProfileDrawer = ({ bottomSheetRef, close, avatar, status, setStatus }: ProfileDrawerProps) => {
 
 
-const ProfileDrawer = ({ bottomSheetRef, close, avatar }) => {
     const dispatch = useDispatch();
 
     const snapPoints = useMemo(() => ['60%'], []);
@@ -19,7 +29,7 @@ const ProfileDrawer = ({ bottomSheetRef, close, avatar }) => {
 
     const renderRightActions = () => <TopNavigationAction icon={<IconFont name="i-shouye" size={25} color={'blue'} />} />;
 
-    const getAvatarName = (value) => Object.keys(avatars).find(key => avatars[key] === value)
+    const getAvatarName = (value: any) => Object.keys(avatars).find(key => avatars[key] === value)
 
 
     const element = SVGsArray.map((Each) =>
@@ -30,11 +40,19 @@ const ProfileDrawer = ({ bottomSheetRef, close, avatar }) => {
 
     return (
         <BottomSheet
-            style={{ backgroundColor: '#a8b5eb' }}
             ref={bottomSheetRef}
+            onClose={() => setStatus(-1)}
             index={-1}
             enablePanDownToClose
             snapPoints={snapPoints}
+            backdropComponent={(props) =>
+                <BottomSheetBackdrop
+                    {...props}
+                    enableTouchThrough={false}
+                    appearsOnIndex={0}
+                    disappearsOnIndex={-1}
+                    animatedIndex={{ value: status }}
+                />}
         >
             <View>
                 <TopNavigation
@@ -52,7 +70,7 @@ const ProfileDrawer = ({ bottomSheetRef, close, avatar }) => {
                     columnWrapperStyle={styles.columns}
                 />
             </View>
-        </BottomSheet>
+        </BottomSheet >
     );
 };
 export default ProfileDrawer;

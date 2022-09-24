@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { Text, View, StyleSheet, ScrollView, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
-import api from '../../api';
+import { Text, View, StyleSheet, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
 import { mainGreen } from '../../constants/theme';
 
 const Categories = () => {

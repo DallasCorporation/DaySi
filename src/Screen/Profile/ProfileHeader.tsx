@@ -1,9 +1,8 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import IconFont from '../../iconfont';
-import { Avatar, Text, Input, Layout, Button, Drawer, DrawerItem, Select, SelectItem } from '@ui-kitten/components';
-import AvatarIcon from '../../assets/avatars/Avatar-2.svg';
-import avatars, { SVGsArray } from '../../assets/exportAvatar';
+import { Avatar, Text, Input, Button } from '@ui-kitten/components';
+import avatars from '../../assets/exportAvatar';
 
 const ProfileHeader = ({ handleClick, ...props }) => {
   const { user } = props;
@@ -11,10 +10,9 @@ const ProfileHeader = ({ handleClick, ...props }) => {
   const [name, setName] = useState(user.name);
   const [surname, setSurname] = useState(user.surname);
   const [phone, setPhone] = useState(user.phone);
-  const [value, setValue] = useState('');
   const [edit, setEdit] = useState(true);
 
-  const renderAvatar = (Item) => <Item width={200} height={200} />;
+  const renderAvatar = (Item: any) => <Item width={200} height={200} />;
 
   return (
     <View style={{ justifyContent: 'center' }}>
@@ -48,7 +46,7 @@ const ProfileHeader = ({ handleClick, ...props }) => {
         label={'Cognome'}
         status="info"
         accessoryLeft={<IconFont name={'i-shenhe'} size={25} />}
-        onChangeText={(val) => setPhone(val)}
+        onChangeText={(val) => setSurname(val)}
       />
       <Input
         placeholder="Numero di Telefono"
@@ -59,7 +57,7 @@ const ProfileHeader = ({ handleClick, ...props }) => {
         label={'Numero di Telefono'}
         status="info"
         accessoryLeft={<IconFont name={'i-shenhe'} size={25} />}
-        onChangeText={(val) => setValue(val)}
+        onChangeText={(val) => setPhone(val)}
       />
 
       <Button

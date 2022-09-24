@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { SafeAreaView, View, StyleSheet, ScrollView } from 'react-native';
 import ProfileHeader from './ProfileHeader';
 import ProfileDrawer from './ProfileDrawer';
@@ -8,12 +8,15 @@ const Profile = () => {
   const avatar = useSelector(state => state.user.avatar);
   const user = useSelector(state => state.user);
   const bottomSheetRef = useRef(null);
+  const [status, setStatus] = useState(-1)
 
   const handleClick = () => {
     bottomSheetRef.current?.snapToIndex(0);
+    setStatus(0)
   };
   const close = () => {
     bottomSheetRef.current?.close();
+    setStatus(-1)
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -22,7 +25,7 @@ const Profile = () => {
           <ProfileHeader user={user} avatar={avatar} handleClick={handleClick} />
         </View>
       </ScrollView>
-      <ProfileDrawer avatar={avatar} bottomSheetRef={bottomSheetRef} close={close} />
+      <ProfileDrawer setStatus={setStatus} status={status} avatar={avatar} bottomSheetRef={bottomSheetRef} close={close} />
     </SafeAreaView>
   );
 };

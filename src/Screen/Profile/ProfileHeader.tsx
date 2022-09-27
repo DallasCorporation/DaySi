@@ -4,9 +4,8 @@ import IconFont from '../../iconfont';
 import { Avatar, Text, Input, Button } from '@ui-kitten/components';
 import avatars from '../../assets/exportAvatar';
 
-const ProfileHeader = ({ handleClick, ...props }) => {
+const ProfileHeader = ({ handleClick, ...props }:any) => {
   const { user } = props;
-  console.log(user);
   const [name, setName] = useState(user.name);
   const [surname, setSurname] = useState(user.surname);
   const [phone, setPhone] = useState(user.phone);
@@ -65,7 +64,7 @@ const ProfileHeader = ({ handleClick, ...props }) => {
         status="info"
         appearance="outline"
         accessoryLeft={<IconFont name={'i-shenhe'} size={25} color={'white'} />}
-        onPress={() => { setEdit(!edit); }} style={[styles.input, { borderRadius: 10 }]}>{edit ? 'Edit' : 'Update'}
+        onPress={() => { setEdit(!edit); }} style={[styles.input, { borderRadius: 10 }]}>{edit ? 'Modifica' : 'Aggiorna'}
       </Button>
     </View>
   );

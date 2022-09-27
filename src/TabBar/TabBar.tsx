@@ -15,17 +15,17 @@ const tabs = [
     {
         name: 'Maps',
         icon: 'i-dingwei',
-        route: 'Categories',
+        route: 'Categorie',
     },
     {
         name: 'Maps',
-        icon: 'i-dingwei',
+        icon: 'i-search',
         route: 'Maps',
     },
     {
         name: 'Account',
         icon: 'i-shouye',
-        route: 'Profile',
+        route: 'Account',
     },
 ];
 const tabWidth = width / tabs.length;

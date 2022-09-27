@@ -6,8 +6,8 @@ import Categories from '../Screen/Categories/Categories';
 import { mainGreen } from '../constants/theme';
 import TabBar from '../TabBar/TabBar';
 import { StyleSheet, View } from 'react-native';
-import Access from '../Access';
 import { useNavigation } from '@react-navigation/native';
+import Login from '../Access/Login';
 
 const MyTabs = () => {
   const Tab = createBottomTabNavigator();
@@ -21,16 +21,20 @@ const MyTabs = () => {
           tabBarLabelStyle: {
             fontSize: 14,
           },
-          headerShown: false,
           tabBarStyle: {
             height: 0,
           },
         }}
       >
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Profile" component={Profile} />
-        <Tab.Screen name="Categories" component={Categories} />
-        <Tab.Screen name="Maps" component={Access} />
+        <Tab.Screen name="Home" component={Home} options={{
+          headerShown: false,
+        }} />
+        <Tab.Screen name="Account" component={Profile} />
+        <Tab.Screen name="Categorie" component={Categories} />
+        <Tab.Screen name="Maps" component={Login}
+          options={{
+            headerShown: false,
+          }} />
       </Tab.Navigator>
       <TabBar navigation={navigation} />
     </View>

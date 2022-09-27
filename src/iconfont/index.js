@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+import ISearch from './ISearch';
 import IArrowUpDownCircle from './IArrowUpDownCircle';
 import IParkings from './IParkings';
 import IOrthodoxian from './IOrthodoxian';
@@ -100,6 +101,7 @@ import ISpeed from './ISpeed';
 import IAEnergyResources from './IAEnergyResources';
 import ILock from './ILock';
 import IUser from './IUser';
+export { default as ISearch } from './ISearch';
 export { default as IArrowUpDownCircle } from './IArrowUpDownCircle';
 export { default as IParkings } from './IParkings';
 export { default as IOrthodoxian } from './IOrthodoxian';
@@ -201,202 +203,204 @@ export { default as IUser } from './IUser';
 
 let IconFont = ({ name, ...rest }) => {
   switch (name) {
+    case 'i-search':
+      return <ISearch key="1" {...rest} />;
     case 'i-arrow_up_down_circle':
-      return <IArrowUpDownCircle key="1" {...rest} />;
+      return <IArrowUpDownCircle key="2" {...rest} />;
     case 'i--parkings':
-      return <IParkings key="2" {...rest} />;
+      return <IParkings key="3" {...rest} />;
     case 'i--orthodoxian':
-      return <IOrthodoxian key="3" {...rest} />;
+      return <IOrthodoxian key="4" {...rest} />;
     case 'i--shopping-mal':
-      return <IShoppingMal key="4" {...rest} />;
+      return <IShoppingMal key="5" {...rest} />;
     case 'i-airport':
-      return <IAirport key="5" {...rest} />;
+      return <IAirport key="6" {...rest} />;
     case 'i-ambulance':
-      return <IAmbulance key="6" {...rest} />;
+      return <IAmbulance key="7" {...rest} />;
     case 'i-bank':
-      return <IBank key="7" {...rest} />;
+      return <IBank key="8" {...rest} />;
     case 'i-church':
-      return <IChurch key="8" {...rest} />;
+      return <IChurch key="9" {...rest} />;
     case 'i-factory':
-      return <IFactory key="9" {...rest} />;
+      return <IFactory key="10" {...rest} />;
     case 'i-fire-station':
-      return <IFireStation key="10" {...rest} />;
+      return <IFireStation key="11" {...rest} />;
     case 'i-museum':
-      return <IMuseum key="11" {...rest} />;
+      return <IMuseum key="12" {...rest} />;
     case 'i-police':
-      return <IPolice key="12" {...rest} />;
+      return <IPolice key="13" {...rest} />;
     case 'i-school':
-      return <ISchool key="13" {...rest} />;
+      return <ISchool key="14" {...rest} />;
     case 'i-university':
-      return <IUniversity key="14" {...rest} />;
+      return <IUniversity key="15" {...rest} />;
     case 'i-theater':
-      return <ITheater key="15" {...rest} />;
+      return <ITheater key="16" {...rest} />;
     case 'i--skyline':
-      return <ISkyline key="16" {...rest} />;
+      return <ISkyline key="17" {...rest} />;
     case 'i--house':
-      return <IHouse key="17" {...rest} />;
+      return <IHouse key="18" {...rest} />;
     case 'i-battery':
-      return <IBattery key="18" {...rest} />;
+      return <IBattery key="19" {...rest} />;
     case 'i-bike':
-      return <IBike key="19" {...rest} />;
+      return <IBike key="20" {...rest} />;
     case 'i-bio':
-      return <IBio key="20" {...rest} />;
+      return <IBio key="21" {...rest} />;
     case 'i-biofuel':
-      return <IBiofuel key="21" {...rest} />;
+      return <IBiofuel key="22" {...rest} />;
     case 'i-biohazard':
-      return <IBiohazard key="22" {...rest} />;
+      return <IBiohazard key="23" {...rest} />;
     case 'i-co2':
-      return <ICo2 key="23" {...rest} />;
+      return <ICo2 key="24" {...rest} />;
     case 'i-eco-house':
-      return <IEcoHouse key="24" {...rest} />;
+      return <IEcoHouse key="25" {...rest} />;
     case 'i-eco':
-      return <IEco key="25" {...rest} />;
+      return <IEco key="26" {...rest} />;
     case 'i-ecology':
-      return <IEcology key="26" {...rest} />;
+      return <IEcology key="27" {...rest} />;
     case 'i-electricity':
-      return <IElectricity key="27" {...rest} />;
+      return <IElectricity key="28" {...rest} />;
     case 'i-electric-car':
-      return <IElectricCar key="28" {...rest} />;
+      return <IElectricCar key="29" {...rest} />;
     case 'i-global-warming':
-      return <IGlobalWarming key="29" {...rest} />;
+      return <IGlobalWarming key="30" {...rest} />;
     case 'i-green-energy':
-      return <IGreenEnergy key="30" {...rest} />;
+      return <IGreenEnergy key="31" {...rest} />;
     case 'i-hydro-power':
-      return <IHydroPower key="31" {...rest} />;
+      return <IHydroPower key="32" {...rest} />;
     case 'i-industry':
-      return <IIndustry key="32" {...rest} />;
+      return <IIndustry key="33" {...rest} />;
     case 'i-lights':
-      return <ILights key="33" {...rest} />;
+      return <ILights key="34" {...rest} />;
     case 'i-nuclear-power':
-      return <INuclearPower key="34" {...rest} />;
+      return <INuclearPower key="35" {...rest} />;
     case 'i-recycle':
-      return <IRecycle key="35" {...rest} />;
+      return <IRecycle key="36" {...rest} />;
     case 'i-solar-panels':
-      return <ISolarPanels key="36" {...rest} />;
+      return <ISolarPanels key="37" {...rest} />;
     case 'i-sun-energy':
-      return <ISunEnergy key="37" {...rest} />;
+      return <ISunEnergy key="38" {...rest} />;
     case 'i-turbine':
-      return <ITurbine key="38" {...rest} />;
+      return <ITurbine key="39" {...rest} />;
     case 'i-water':
-      return <IWater key="39" {...rest} />;
+      return <IWater key="40" {...rest} />;
     case 'i-blaze-line':
-      return <IBlazeLine key="40" {...rest} />;
+      return <IBlazeLine key="41" {...rest} />;
     case 'i-fire-line':
-      return <IFireLine key="41" {...rest} />;
+      return <IFireLine key="42" {...rest} />;
     case 'i-flashlight-line':
-      return <IFlashlightLine key="42" {...rest} />;
+      return <IFlashlightLine key="43" {...rest} />;
     case 'i-money-euro-circle-line':
-      return <IMoneyEuroCircleLine key="43" {...rest} />;
+      return <IMoneyEuroCircleLine key="44" {...rest} />;
     case 'i-water-flash-line':
-      return <IWaterFlashLine key="44" {...rest} />;
+      return <IWaterFlashLine key="45" {...rest} />;
     case 'i-Energy':
-      return <IEnergy key="45" {...rest} />;
+      return <IEnergy key="46" {...rest} />;
     case 'i-riqi':
-      return <IRiqi key="46" {...rest} />;
+      return <IRiqi key="47" {...rest} />;
     case 'i-ziliao':
-      return <IZiliao key="47" {...rest} />;
+      return <IZiliao key="48" {...rest} />;
     case 'i-zixun':
-      return <IZixun key="48" {...rest} />;
+      return <IZixun key="49" {...rest} />;
     case 'i-bianxie':
-      return <IBianxie key="49" {...rest} />;
+      return <IBianxie key="50" {...rest} />;
     case 'i-shouye':
-      return <IShouye key="50" {...rest} />;
+      return <IShouye key="51" {...rest} />;
     case 'i-celsius-line':
-      return <ICelsiusLine key="51" {...rest} />;
+      return <ICelsiusLine key="52" {...rest} />;
     case 'i-cloudy-2-line':
-      return <ICloudy2Line key="52" {...rest} />;
+      return <ICloudy2Line key="53" {...rest} />;
     case 'i-blaze-fill':
-      return <IBlazeFill key="53" {...rest} />;
+      return <IBlazeFill key="54" {...rest} />;
     case 'i-flashlight-fill':
-      return <IFlashlightFill key="54" {...rest} />;
+      return <IFlashlightFill key="55" {...rest} />;
     case 'i-fire-fill':
-      return <IFireFill key="55" {...rest} />;
+      return <IFireFill key="56" {...rest} />;
     case 'i-home-7-fill':
-      return <IHome7Fill key="56" {...rest} />;
+      return <IHome7Fill key="57" {...rest} />;
     case 'i-hospital-fill':
-      return <IHospitalFill key="57" {...rest} />;
+      return <IHospitalFill key="58" {...rest} />;
     case 'i-send-plane-fill':
-      return <ISendPlaneFill key="58" {...rest} />;
+      return <ISendPlaneFill key="59" {...rest} />;
     case 'i-send-plane-line':
-      return <ISendPlaneLine key="59" {...rest} />;
+      return <ISendPlaneLine key="60" {...rest} />;
     case 'i-pie-chart-2-fill':
-      return <IPieChart2Fill key="60" {...rest} />;
+      return <IPieChart2Fill key="61" {...rest} />;
     case 'i-line-chart-line':
-      return <ILineChartLine key="61" {...rest} />;
+      return <ILineChartLine key="62" {...rest} />;
     case 'i-slideshow-fill':
-      return <ISlideshowFill key="62" {...rest} />;
+      return <ISlideshowFill key="63" {...rest} />;
     case 'i-customer-service-line':
-      return <ICustomerServiceLine key="63" {...rest} />;
+      return <ICustomerServiceLine key="64" {...rest} />;
     case 'i-ball-pen-line':
-      return <IBallPenLine key="64" {...rest} />;
+      return <IBallPenLine key="65" {...rest} />;
     case 'i-quill-pen-line':
-      return <IQuillPenLine key="65" {...rest} />;
+      return <IQuillPenLine key="66" {...rest} />;
     case 'i-tools-fill':
-      return <IToolsFill key="66" {...rest} />;
+      return <IToolsFill key="67" {...rest} />;
     case 'i-battery-2-charge-fill':
-      return <IBattery2ChargeFill key="67" {...rest} />;
+      return <IBattery2ChargeFill key="68" {...rest} />;
     case 'i-battery-charge-fill':
-      return <IBatteryChargeFill key="68" {...rest} />;
+      return <IBatteryChargeFill key="69" {...rest} />;
     case 'i-battery-2-charge-line':
-      return <IBattery2ChargeLine key="69" {...rest} />;
+      return <IBattery2ChargeLine key="70" {...rest} />;
     case 'i-dashboard-3-line':
-      return <IDashboard3Line key="70" {...rest} />;
+      return <IDashboard3Line key="71" {...rest} />;
     case 'i-dashboard-3-fill':
-      return <IDashboard3Fill key="71" {...rest} />;
+      return <IDashboard3Fill key="72" {...rest} />;
     case 'i-fingerprint-2-line':
-      return <IFingerprint2Line key="72" {...rest} />;
+      return <IFingerprint2Line key="73" {...rest} />;
     case 'i-fingerprint-fill':
-      return <IFingerprintFill key="73" {...rest} />;
+      return <IFingerprintFill key="74" {...rest} />;
     case 'i-radar-fill':
-      return <IRadarFill key="74" {...rest} />;
+      return <IRadarFill key="75" {...rest} />;
     case 'i-wireless-charging-fill':
-      return <IWirelessChargingFill key="75" {...rest} />;
+      return <IWirelessChargingFill key="76" {...rest} />;
     case 'i-wireless-charging-line':
-      return <IWirelessChargingLine key="76" {...rest} />;
+      return <IWirelessChargingLine key="77" {...rest} />;
     case 'i-exchange-funds-line':
-      return <IExchangeFundsLine key="77" {...rest} />;
+      return <IExchangeFundsLine key="78" {...rest} />;
     case 'i-exchange-line':
-      return <IExchangeLine key="78" {...rest} />;
+      return <IExchangeLine key="79" {...rest} />;
     case 'i-compass-discover-line':
-      return <ICompassDiscoverLine key="79" {...rest} />;
+      return <ICompassDiscoverLine key="80" {...rest} />;
     case 'i-compass-line':
-      return <ICompassLine key="80" {...rest} />;
+      return <ICompassLine key="81" {...rest} />;
     case 'i-map-pin-line':
-      return <IMapPinLine key="81" {...rest} />;
+      return <IMapPinLine key="82" {...rest} />;
     case 'i-gaishuai':
-      return <IGaishuai key="82" {...rest} />;
+      return <IGaishuai key="83" {...rest} />;
     case 'i-fenlei':
-      return <IFenlei key="83" {...rest} />;
+      return <IFenlei key="84" {...rest} />;
     case 'i-bianji':
-      return <IBianji key="84" {...rest} />;
+      return <IBianji key="85" {...rest} />;
     case 'i-xiaoxi':
-      return <IXiaoxi key="85" {...rest} />;
+      return <IXiaoxi key="86" {...rest} />;
     case 'i-shanchu':
-      return <IShanchu key="86" {...rest} />;
+      return <IShanchu key="87" {...rest} />;
     case 'i-dianpu':
-      return <IDianpu key="87" {...rest} />;
+      return <IDianpu key="88" {...rest} />;
     case 'i-shezhi':
-      return <IShezhi key="88" {...rest} />;
+      return <IShezhi key="89" {...rest} />;
     case 'i-faxian':
-      return <IFaxian key="89" {...rest} />;
+      return <IFaxian key="90" {...rest} />;
     case 'i-dingwei':
-      return <IDingwei key="90" {...rest} />;
+      return <IDingwei key="91" {...rest} />;
     case 'i-xiazai':
-      return <IXiazai key="91" {...rest} />;
+      return <IXiazai key="92" {...rest} />;
     case 'i-shenhe':
-      return <IShenhe key="92" {...rest} />;
+      return <IShenhe key="93" {...rest} />;
     case 'i-liaotian':
-      return <ILiaotian key="93" {...rest} />;
+      return <ILiaotian key="94" {...rest} />;
     case 'i-news':
-      return <INews key="94" {...rest} />;
+      return <INews key="95" {...rest} />;
     case 'i-speed':
-      return <ISpeed key="95" {...rest} />;
+      return <ISpeed key="96" {...rest} />;
     case 'i-a-EnergyResources':
-      return <IAEnergyResources key="96" {...rest} />;
+      return <IAEnergyResources key="97" {...rest} />;
     case 'i-lock':
-      return <ILock key="97" {...rest} />;
+      return <ILock key="98" {...rest} />;
     case 'i-user':
-      return <IUser key="98" {...rest} />;
+      return <IUser key="99" {...rest} />;
   }
 
   return null;

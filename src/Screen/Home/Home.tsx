@@ -5,7 +5,7 @@ import { image_2 } from '../../constants/images';
 import { image_3 } from '../../constants/images';
 import { image_4 } from '../../constants/images';
 
-import { mainGreen, white, windowWidth } from '../../constants/theme';
+import { white, windowWidth } from '../../constants/theme';
 
 const Home = () => {
 
@@ -51,7 +51,7 @@ const Home = () => {
                 </ScrollView>
                 <ScrollView>
                     {cat.map(el =>
-                        <View key={el.name} style={{ width: windowWidth - 50, backgroundColor: 'white', height: 165, alignSelf: 'center', borderRadius: 20, marginBottom: 20, padding: 25,flexDirection:'row', elevation:10, shadowColor:'white' }}>
+                        <View key={el.name} style={{ width: windowWidth - 50, backgroundColor: 'white', height: 165, alignSelf: 'center', borderRadius: 20, marginBottom: 20, padding: 25, flexDirection: 'row', elevation: 10, shadowColor: 'white' }}>
                             <View>
                                 <Text style={{ fontSize: 25, color: '#9C841C8C', fontWeight: 'bold' }}>{el.name}</Text>
                                 <Text style={{ fontSize: 15, color: 'black' }}>{el.desc}</Text>
@@ -60,7 +60,7 @@ const Home = () => {
                                 </TouchableOpacity>
                             </View>
                             <View>
-                                <Image source={el.img} style={{ width: 140, height: 140}}  />
+                                <Image source={el.img} style={{ width: 140, height: 140 }} />
                             </View>
                         </View>
                     )}
@@ -70,7 +70,7 @@ const Home = () => {
     );
 };
 
-const styles = (props) => StyleSheet.create({
+const styles = () => StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: white,

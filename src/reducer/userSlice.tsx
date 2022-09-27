@@ -8,11 +8,12 @@ export const userSlice = createSlice({
     avatar: 'Avatar1',
     surname: 'Dallas',
     name: 'Emanuele',
-    phone: '3400981328',
+    email: 'lele@email.com',
+    logged: false,
   } as UserState,
   reducers: {
     updateUser: (state, action) => {
-      state.avatar = action.payload
+      return { ...action.payload, logged: true, avatar: 'Avatar1', }
     },
     updateAvatar: (state, action) => {
       state.avatar = action.payload;
@@ -20,6 +21,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { updateAvatar } = userSlice.actions;
+export const { updateAvatar, updateUser } = userSlice.actions;
 
 export default userSlice.reducer;

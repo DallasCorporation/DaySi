@@ -1,70 +1,146 @@
-import React, { useEffect } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
-import { mainGreen } from '../../constants/theme';
+import { Autocomplete, AutocompleteItem, Icon } from '@ui-kitten/components';
+import React, { useEffect, useState } from 'react';
+import { Platform, Text, View, StyleSheet, TouchableOpacity, FlatList, SafeAreaView, Image, ImageBackground } from 'react-native';
+import api from '../../api';
 
 const Categories = () => {
-    useEffect(() => {
-        // api.category.getAll().then()
-    }, [])
 
-    let cate = [
-        {
-            name: "Parrucchiere",
-        },
-        {
-            name: "Meccanico",
-        },
-        {
-            name: "Personal Trainer",
-        },
-        {
-            name: "Mental Coach",
-        },
-        {
-            name: "Yoga",
-        },
-        {
-            name: "Estetista",
-        },
-    ]
+    const [categories, setCategories] = useState<any>();
+    const [value, setValue] = useState<string>('');
+    const [data, setData] = useState<any>(categories);
+
+    const fetch = async () => {
+        await api.category.getAll().then(res => {
+            setCategories(res);
+            setData(res);
+            console.log(res);
+        });
+    };
+    useEffect(() => {
+        fetch();
+    }, []);
+
+    const filter = (item: any, query: string) => item.name.toLowerCase().includes(query.toLowerCase());
+
+
+
+    const onSelect = (index: number) => {
+        setValue(data[index].name);
+    };
+
+    const onChangeText = (query: any) => {
+        setValue(query);
+        setData(categories.filter((item: any) => filter(item, query)));
+    };
+
+    const clearInput = () => {
+        setValue('');
+        setData(categories);
+    };
+
+    const search = () => {
+        console.log(value);
+        setData(categories);
+    };
+
+    const renderOption = (item: any, index: number) => (
+        <AutocompleteItem
+            key={index}
+            title={item.name}
+        // accessoryLeft={StarIcon}
+        />
+    );
+
+    const renderCloseIcon = (props: any) => (
+        <View style={{ flexDirection: 'row' }}>
+            {value.length > 0 &&
+                <TouchableOpacity onPress={clearInput}>
+                    <Icon fill="#ff0000" {...props} name="close" />
+                </TouchableOpacity>
+            }
+            <TouchableOpacity onPress={search}>
+                <Icon {...props} name="search" />
+            </TouchableOpacity>
+        </View>
+    );
+
+
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={{  fontSize: 30, marginLeft: 25 }}>Categorie</Text>
-            <View style={{ backgroundColor: 'white', margin: 25, height: 45, borderRadius: 10, marginBottom: 25 }}>
-                <Text style={{ fontSize: 16, color: 'black', textAlign: 'center', marginTop: 10 }}>Categorie trovate per: Bologna</Text>
-            </View>
-
+            <Autocomplete
+                style={styles.autoComplete}
+                placeholder="Cerca una categoria"
+                value={value}
+                accessoryRight={renderCloseIcon}
+                onChangeText={onChangeText}
+                onSelect={onSelect}
+            >
+                {Object(data).length > 0 && data.map(renderOption)}
+            </Autocomplete>
             <SafeAreaView style={{ flex: 1 }}>
-
-                <FlatList style={{ marginLeft: 25 }}
-                    contentContainerStyle={{ padding: 15 }}
-                    data={cate}
+                <FlatList
+                    style={styles.flatList}
+                    columnWrapperStyle={styles.columns}
+                    data={categories}
                     numColumns={2}
                     keyExtractor={(item) => item.name}
                     renderItem={(el) =>
-                        <TouchableOpacity style={{ flexDirection: 'row', flex: 1, marginBottom: 25 }}>
+                        <TouchableOpacity style={styles.card}>
+                            <View >
+                                <ImageBackground
+                                    resizeMode="cover"
+                                    imageStyle={{ borderRadius: 6}}
+                                    style={{ width: "100%", height: 80, borderTopRightRadius: 6, borderTopLeftRadius: 6, overflow:"hidden" }} source={{ uri: el.item.image }} >
+                                    <View style={styles.darkMask} />
 
-                            <View style={{
-                                width: 153, height: 130, flexDirection: 'row', backgroundColor: 'white', borderRadius: 20,
-                            }}>
-                                <View>
-                                    <View style={{ marginLeft: 14, marginRight: 14, marginTop: 10, width: 125, height: 93, backgroundColor: '#DAB701', borderRadius: 10 }} />
-                                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#000', textAlign: 'center' }}>{el.item.name}</Text>
-                                </View>
+                                </ImageBackground>
+                                <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#000', textAlign: 'center', marginTop: 3 }}>{el.item.name}</Text>
                             </View>
                         </TouchableOpacity>
                     }
                 />
             </SafeAreaView>
         </SafeAreaView>
-
     );
 };
 const styles = StyleSheet.create({
     container: {
+        marginTop: 32,
         flex: 1,
-        backgroundColor: mainGreen,
     },
+    flatList: {
+        paddingTop: 20,
+        paddingHorizontal: 20,
+    },
+    columns: {
 
+        marginBottom: 20,
+        justifyContent: 'space-between',
+    },
+    autoComplete: {
+        marginHorizontal: 15,
+        borderRadius: 10,
+        backgroundColor: 'white',
+    },
+    card: {
+        flex: 0.48,
+        borderRadius: 6,
+        backgroundColor: 'white',
+        ...Platform.select({
+            ios: {
+                shadowColor: '#000',
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.5,
+                shadowRadius: 5,
+            },
+            android: {
+                elevation: 5,
+            },
+        }),
+    },
+    darkMask: {
+        flex: 1,
+        backgroundColor: 'rgba(0,0,0,0.5)',
+    },
 });
 export default Categories;

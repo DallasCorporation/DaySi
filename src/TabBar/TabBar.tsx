@@ -14,12 +14,12 @@ const tabs = [
     },
     {
         name: 'Maps',
-        icon: 'i-dingwei',
+        icon: 'i-search',
         route: 'Categorie',
     },
     {
-        name: 'Maps',
-        icon: 'i-search',
+        name: 'Search',
+        icon: 'i-dingwei',
         route: 'Maps',
     },
     {

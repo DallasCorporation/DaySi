@@ -7,7 +7,7 @@ import { mainGreen } from '../constants/theme';
 import TabBar from '../TabBar/TabBar';
 import { StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Login from '../Access/Login';
+import Maps from '../Maps/Maps';
 
 const MyTabs = () => {
   const Tab = createBottomTabNavigator();
@@ -31,7 +31,7 @@ const MyTabs = () => {
         }} />
         <Tab.Screen name="Account" component={Profile} />
         <Tab.Screen name="Categorie" component={Categories} />
-        <Tab.Screen name="Maps" component={Login}
+        <Tab.Screen name="Maps" component={Maps}
           options={{
             headerShown: false,
           }} />

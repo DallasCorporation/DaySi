@@ -61,7 +61,7 @@ const SignUp = ({ navigation }: any) => {
         });
     };
 
-    const renderAvatar = (Item: any) => <Item width={70} height={70} />;
+    const renderAvatar = (Item: any) => <Item width={70} height={90} />;
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
@@ -74,7 +74,7 @@ const SignUp = ({ navigation }: any) => {
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.mainView}>
                 <View style={styles.userIcon}>
-                    <Avatar style={styles.avatar} size="large" ImageComponent={() => renderAvatar(avatars.Avatar1)} />
+                    <Avatar style={styles.avatar} size="large" ImageComponent={() => renderAvatar(avatars.Avatar0)} />
                 </View>
                 <View style={styles.text}>
                     <Text category="h6">Registrati a DaySì ora!</Text>
@@ -137,6 +137,7 @@ const SignUp = ({ navigation }: any) => {
                         // accessoryRight={LoginIcon}
                         onPress={() => submit()}
                         appearance="outline"
+                        status='warning'
                         size="small"
                         style={[styles.formEntry, { borderRadius: 20 }]}>Registrati</Button>
                 </View>
@@ -145,21 +146,21 @@ const SignUp = ({ navigation }: any) => {
                 <TouchableOpacity style={styles.rounded} >
                     <Icon
                         style={styles.icon}
-                        fill="#00eafd"
+                        fill="#f8c11c"
                         name="google-outline"
                     />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.rounded} onPress={() => navigation.navigate('Login', { name: 'Jane' })}>
                     <Icon
                         style={styles.icon}
-                        fill="#00eafd"
+                        fill="#f8c11c"
                         name="person-add-outline"
                     />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.rounded} onPress={() => { }}>
                     <Icon
                         style={styles.icon}
-                        fill="#00eafd"
+                        fill="#f8c11c"
                         animation="pulse"
                         name="close-circle-outline"
                     />

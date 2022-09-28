@@ -2,7 +2,7 @@ import { Avatar, Button, Icon, Input, Text } from '@ui-kitten/components';
 import React, { useState } from 'react';
 import { Platform, SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import api from '../api';
 import avatars from '../assets/exportAvatar';
 import { updateUser } from '../reducer/userSlice';
@@ -18,7 +18,6 @@ const Login = ({ navigation }: any) => {
             dispatch(dispatch(updateUser(res)));
         });
     };
-    const user = useSelector((state: any) => state.user);
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [secureTextEntry, setSecureTextEntry] = useState<boolean>(true);
@@ -58,7 +57,9 @@ const Login = ({ navigation }: any) => {
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.mainView}>
                 <View style={styles.userIcon}>
-                    <Avatar style={styles.avatar} size="large" ImageComponent={() => renderAvatar(avatars[user.avatar])} />
+                    <View>
+                        <Avatar size="large" ImageComponent={() => renderAvatar(avatars.Avatar0)} />
+                    </View>
                 </View>
                 <View style={styles.text}>
                     <Text category="h6">Accedi al tuo account</Text>
@@ -165,10 +166,6 @@ const styles = StyleSheet.create({
                 elevation: 5,
             },
         }),
-    },
-    avatar: {
-        width: 180,
-        height: 180,
     },
     text: {
         marginTop: 22,

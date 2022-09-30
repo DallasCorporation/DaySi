@@ -1,6 +1,6 @@
 import { Autocomplete, AutocompleteItem, Icon } from '@ui-kitten/components';
 import React, { useEffect, useState } from 'react';
-import { Platform, Text, View, StyleSheet, TouchableOpacity, FlatList, SafeAreaView, Image, ImageBackground } from 'react-native';
+import { Platform, Text, View, StyleSheet, TouchableOpacity, FlatList, SafeAreaView, ImageBackground } from 'react-native';
 import api from '../../api';
 
 const Categories = () => {
@@ -107,10 +107,10 @@ const styles = StyleSheet.create({
     container: {
         marginTop: 32,
         flex: 1,
+        marginHorizontal: 15,
     },
     flatList: {
         paddingTop: 20,
-        paddingHorizontal: 20,
     },
     columns: {
 
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     autoComplete: {
-        marginHorizontal: 15,
+       
         borderRadius: 10,
         backgroundColor: 'white',
     },

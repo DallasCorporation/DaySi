@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import IconFont from '../../iconfont';
 import { Avatar, Text, Input, Button } from '@ui-kitten/components';
 import avatars from '../../assets/exportAvatar';
+import api from '../../api';
 
-const ProfileHeader = ({ handleClick, ...props }:any) => {
+const ProfileHeader = ({ handleClick, ...props }: any) => {
   const { user } = props;
   const [name, setName] = useState(user.name);
   const [surname, setSurname] = useState(user.surname);
@@ -12,6 +13,19 @@ const ProfileHeader = ({ handleClick, ...props }:any) => {
   const [edit, setEdit] = useState(true);
 
   const renderAvatar = (Item: any) => <Item width={200} height={200} />;
+
+  const updateInfo = async () => {
+    if (!edit) {
+      await api.user.update(user._id, {
+        name,
+        surname,
+        email,
+      }).then(() => {
+        Alert.alert("Informazioni aggiornate")
+      });
+    }
+    setEdit(!edit);
+  };
 
   return (
     <View style={{ justifyContent: 'center' }}>
@@ -44,7 +58,7 @@ const ProfileHeader = ({ handleClick, ...props }:any) => {
         disabled={edit}
         label={'Cognome'}
         status="info"
-        accessoryLeft={<IconFont name={'i-shenhe'} size={25} />}
+        accessoryLeft={<IconFont name={'i-shouye'} size={25} />}
         onChangeText={(val) => setSurname(val)}
       />
       <Input
@@ -55,7 +69,7 @@ const ProfileHeader = ({ handleClick, ...props }:any) => {
         disabled={edit}
         label={'Email'}
         status="info"
-        accessoryLeft={<IconFont name={'i-shenhe'} size={25} />}
+        accessoryLeft={<IconFont name={'i-mail'} size={25} />}
         onChangeText={(val) => setEmail(val)}
       />
 
@@ -64,7 +78,7 @@ const ProfileHeader = ({ handleClick, ...props }:any) => {
         status="info"
         appearance="outline"
         accessoryRight={<IconFont name={'i-bianji'} size={25} color={'blue'} />}
-        onPress={() => { setEdit(!edit); }} style={[styles.input, { borderRadius: 10 }]}>{edit ? 'Modifica' : 'Aggiorna'}
+        onPress={() => { updateInfo() }} style={[styles.input, { borderRadius: 10 }]}>{edit ? 'Modifica' : 'Aggiorna'}
       </Button>
     </View>
   );

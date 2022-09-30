@@ -6,6 +6,7 @@ import { image_3 } from '../../constants/images';
 import { image_4 } from '../../constants/images';
 
 import { white, windowWidth } from '../../constants/theme';
+import IconFont from '../../iconfont';
 
 const Home = () => {
 
@@ -46,7 +47,7 @@ const Home = () => {
                     {array.map(el =>
                         <TouchableOpacity key={el} style={styles().containerHome}>
                             <View style={styles().buttonHome}>
-
+                                <IconFont name="i-yoga" size={32}/>
                             </View>
                             <Text style={{ fontSize: 12, fontWeight: 'bold', textAlign: 'center' }}>{el}</Text>
                         </TouchableOpacity>
@@ -76,7 +77,7 @@ const Home = () => {
 const styles = () => StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop:10,
+        paddingTop: 10,
         backgroundColor: white,
     },
     titleHome: {
@@ -93,6 +94,8 @@ const styles = () => StyleSheet.create({
         width: 70,
         height: 70,
         borderRadius: 20,
+        justifyContent:"center",
+        alignItems:"center"
     },
     containerHome: {
         margin: 9,

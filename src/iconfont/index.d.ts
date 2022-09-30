@@ -5,6 +5,19 @@ import { FunctionComponent } from 'react';
 import { ViewProps } from 'react-native';
 import { GProps } from 'react-native-svg';
 
+export { default as INvren } from './INvren';
+export { default as ILifadiantubiao } from './ILifadiantubiao';
+export { default as IMeifashalong } from './IMeifashalong';
+export { default as IMeifashalong1 } from './IMeifashalong1';
+export { default as ICar02 } from './ICar02';
+export { default as IMassage } from './IMassage';
+export { default as IMedical } from './IMedical';
+export { default as IEchometer } from './IEchometer';
+export { default as ICar } from './ICar';
+export { default as IMail } from './IMail';
+export { default as IExit } from './IExit';
+export { default as IYoga } from './IYoga';
+export { default as IGoogle } from './IGoogle';
 export { default as ISearch } from './ISearch';
 export { default as IArrowUpDownCircle } from './IArrowUpDownCircle';
 export { default as IParkings } from './IParkings';
@@ -106,7 +119,7 @@ export { default as ILock } from './ILock';
 export { default as IUser } from './IUser';
 
 interface Props extends GProps, ViewProps {
-  name: 'i-search' | 'i-arrow_up_down_circle' | 'i--parkings' | 'i--orthodoxian' | 'i--shopping-mal' | 'i-airport' | 'i-ambulance' | 'i-bank' | 'i-church' | 'i-factory' | 'i-fire-station' | 'i-museum' | 'i-police' | 'i-school' | 'i-university' | 'i-theater' | 'i--skyline' | 'i--house' | 'i-battery' | 'i-bike' | 'i-bio' | 'i-biofuel' | 'i-biohazard' | 'i-co2' | 'i-eco-house' | 'i-eco' | 'i-ecology' | 'i-electricity' | 'i-electric-car' | 'i-global-warming' | 'i-green-energy' | 'i-hydro-power' | 'i-industry' | 'i-lights' | 'i-nuclear-power' | 'i-recycle' | 'i-solar-panels' | 'i-sun-energy' | 'i-turbine' | 'i-water' | 'i-blaze-line' | 'i-fire-line' | 'i-flashlight-line' | 'i-money-euro-circle-line' | 'i-water-flash-line' | 'i-Energy' | 'i-riqi' | 'i-ziliao' | 'i-zixun' | 'i-bianxie' | 'i-shouye' | 'i-celsius-line' | 'i-cloudy-2-line' | 'i-blaze-fill' | 'i-flashlight-fill' | 'i-fire-fill' | 'i-home-7-fill' | 'i-hospital-fill' | 'i-send-plane-fill' | 'i-send-plane-line' | 'i-pie-chart-2-fill' | 'i-line-chart-line' | 'i-slideshow-fill' | 'i-customer-service-line' | 'i-ball-pen-line' | 'i-quill-pen-line' | 'i-tools-fill' | 'i-battery-2-charge-fill' | 'i-battery-charge-fill' | 'i-battery-2-charge-line' | 'i-dashboard-3-line' | 'i-dashboard-3-fill' | 'i-fingerprint-2-line' | 'i-fingerprint-fill' | 'i-radar-fill' | 'i-wireless-charging-fill' | 'i-wireless-charging-line' | 'i-exchange-funds-line' | 'i-exchange-line' | 'i-compass-discover-line' | 'i-compass-line' | 'i-map-pin-line' | 'i-gaishuai' | 'i-fenlei' | 'i-bianji' | 'i-xiaoxi' | 'i-shanchu' | 'i-dianpu' | 'i-shezhi' | 'i-faxian' | 'i-dingwei' | 'i-xiazai' | 'i-shenhe' | 'i-liaotian' | 'i-news' | 'i-speed' | 'i-a-EnergyResources' | 'i-lock' | 'i-user';
+  name: 'i-nvren' | 'i-lifadiantubiao-' | 'i-meifashalong-' | 'i-meifashalong-1' | 'i-car02' | 'i-massage' | 'i-medical' | 'i-echometer' | 'i-Car-' | 'i-mail' | 'i-exit' | 'i-yoga' | 'i-google' | 'i-search' | 'i-arrow_up_down_circle' | 'i--parkings' | 'i--orthodoxian' | 'i--shopping-mal' | 'i-airport' | 'i-ambulance' | 'i-bank' | 'i-church' | 'i-factory' | 'i-fire-station' | 'i-museum' | 'i-police' | 'i-school' | 'i-university' | 'i-theater' | 'i--skyline' | 'i--house' | 'i-battery' | 'i-bike' | 'i-bio' | 'i-biofuel' | 'i-biohazard' | 'i-co2' | 'i-eco-house' | 'i-eco' | 'i-ecology' | 'i-electricity' | 'i-electric-car' | 'i-global-warming' | 'i-green-energy' | 'i-hydro-power' | 'i-industry' | 'i-lights' | 'i-nuclear-power' | 'i-recycle' | 'i-solar-panels' | 'i-sun-energy' | 'i-turbine' | 'i-water' | 'i-blaze-line' | 'i-fire-line' | 'i-flashlight-line' | 'i-money-euro-circle-line' | 'i-water-flash-line' | 'i-Energy' | 'i-riqi' | 'i-ziliao' | 'i-zixun' | 'i-bianxie' | 'i-shouye' | 'i-celsius-line' | 'i-cloudy-2-line' | 'i-blaze-fill' | 'i-flashlight-fill' | 'i-fire-fill' | 'i-home-7-fill' | 'i-hospital-fill' | 'i-send-plane-fill' | 'i-send-plane-line' | 'i-pie-chart-2-fill' | 'i-line-chart-line' | 'i-slideshow-fill' | 'i-customer-service-line' | 'i-ball-pen-line' | 'i-quill-pen-line' | 'i-tools-fill' | 'i-battery-2-charge-fill' | 'i-battery-charge-fill' | 'i-battery-2-charge-line' | 'i-dashboard-3-line' | 'i-dashboard-3-fill' | 'i-fingerprint-2-line' | 'i-fingerprint-fill' | 'i-radar-fill' | 'i-wireless-charging-fill' | 'i-wireless-charging-line' | 'i-exchange-funds-line' | 'i-exchange-line' | 'i-compass-discover-line' | 'i-compass-line' | 'i-map-pin-line' | 'i-gaishuai' | 'i-fenlei' | 'i-bianji' | 'i-xiaoxi' | 'i-shanchu' | 'i-dianpu' | 'i-shezhi' | 'i-faxian' | 'i-dingwei' | 'i-xiazai' | 'i-shenhe' | 'i-liaotian' | 'i-news' | 'i-speed' | 'i-a-EnergyResources' | 'i-lock' | 'i-user';
   size?: number;
   color?: string | string[];
 }

@@ -31,7 +31,7 @@ const CustomDrawer = (props: any) => {
                 <DrawerItemList {...props} />
             </DrawerContentScrollView>
             <TouchableOpacity style={styles.logout} onPress={() => dispatch(logout())}>
-                <IconFont name={'i-bianji'} size={24} color={'red'} style={{ marginRight: 25 }} />
+                <IconFont name={'i-exit'} size={24} color={'red'} style={{ marginRight: 25 }} />
                 <Text status="danger">Log Out</Text>
             </TouchableOpacity>
         </View>

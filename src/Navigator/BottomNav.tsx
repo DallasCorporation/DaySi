@@ -5,36 +5,55 @@ import Home from '../Screen/Home/Home';
 import Categories from '../Screen/Categories/Categories';
 import { mainGreen } from '../constants/theme';
 import TabBar from '../TabBar/TabBar';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Maps from '../Maps/Maps';
+import { Icon, Text } from '@ui-kitten/components';
+import IconFont from '../iconfont';
 
-const MyTabs = () => {
+const MyTabs = (props: any) => {
+  const IconSimpleUsageShowcase = () => (
+    <TouchableOpacity onPress={() => props.navigation.openDrawer()}>
+      <Icon
+        style={styles.icon}
+        name="menu-2-outline"
+        fill="#00F"
+      />
+    </TouchableOpacity >
+  );
+
+
   const Tab = createBottomTabNavigator();
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Tab.Navigator
         screenOptions={{
-          tabBarInactiveTintColor: '#86888D',
-          tabBarActiveTintColor: '#FFFFFF',
+          headerLeft: () => (IconSimpleUsageShowcase()),
           tabBarLabelStyle: {
-            fontSize: 14,
+            fontSize: 0,
           },
           tabBarStyle: {
             height: 0,
+            display: "none"
           },
+          headerTitle: props => <Text category='s1'>{props.children}</Text>,
         }}
       >
         <Tab.Screen name="Home" component={Home} options={{
-          headerShown: false,
+          headerRight: () => (<IconFont name={'i-dianpu'} color={'blue'} size={20} style={styles.iconFont} />),
         }} />
-        <Tab.Screen name="Account" component={Profile} />
-        <Tab.Screen name="Categorie" component={Categories} />
-        <Tab.Screen name="Maps" component={Maps}
+        <Tab.Screen name="Account" component={Profile}
           options={{
-            headerShown: false,
-          }} />
+            headerRight: () => (<IconFont name={'i-shouye'} color={'blue'} size={20} style={styles.iconFont} />),
+          }}
+        />
+        <Tab.Screen name="Categorie" component={Categories} options={{
+          headerRight: () => (<IconFont name={'i-search'} color={'blue'} size={20} style={styles.iconFont} />),
+        }} />
+        <Tab.Screen name="Maps" component={Maps} options={{
+          headerRight: () => (<IconFont name={'i-dingwei'} color={'blue'} size={20} style={styles.iconFont} />),
+        }} />
       </Tab.Navigator>
       <TabBar navigation={navigation} />
     </View>
@@ -47,5 +66,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: mainGreen,
     justifyContent: 'flex-end',
+  },
+  icon: {
+    width: 20,
+    height: 20,
+    marginLeft: 15,
+  },
+  iconFont: {
+    marginRight: 15,
   },
 });

@@ -27,6 +27,8 @@ export default {
                 .then((res) => res.data),
         update: (id, data) =>
             axios.put(`${API_URL}/user/${id}`, data),
+        updateAvatar: (id, data) =>
+            axios.put(`${API_URL}/userAvatar/${id}`, data),
         updatePassword: (id, data) =>
             axios.put(`${API_URL}/user/password/${id}`, data),
         delete: (id) => {

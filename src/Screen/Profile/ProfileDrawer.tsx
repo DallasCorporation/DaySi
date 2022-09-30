@@ -1,12 +1,13 @@
-import { View, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, FlatList, Alert } from 'react-native';
 import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import React, { Ref, useMemo } from 'react';
 import { Icon, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import IconFont from '../../iconfont';
 import avatars, { SVGsArray } from '../../assets/exportAvatar';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateAvatar } from '../../reducer/userSlice';
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
+import api from '../../api';
 
 interface ProfileDrawerProps {
     bottomSheetRef: Ref<BottomSheetMethods>;
@@ -18,22 +19,32 @@ interface ProfileDrawerProps {
 
 const ProfileDrawer = ({ bottomSheetRef, close, avatar, status, setStatus }: ProfileDrawerProps) => {
 
-
+    const user = useSelector((state: any) => state.user);
     const dispatch = useDispatch();
 
-    const snapPoints = useMemo(() => ['60%'], []);
+    const snapPoints = useMemo(() => ['60%', '100%'], []);
 
     const renderBackAction = () => (
         <TopNavigationAction onPressIn={() => close()} icon={<Icon name="arrow-back" />} />
     );
 
-    const renderRightActions = () => <TopNavigationAction icon={<IconFont name="i-shouye" size={25} color={'blue'} />} />;
+    const renderRightActions = () => <TopNavigationAction icon={
+        <TouchableOpacity>
+            <IconFont name="i-bianxie" size={25} color={'blue'} />
+        </TouchableOpacity>
+    }
+    />;
 
-    const getAvatarName = (value: any) => Object.keys(avatars).find(key => avatars[key] === value)
+    const getAvatarName = (value: any) => Object.keys(avatars).find(key => avatars[key] === value);
 
+    const callUpdateAvatar = async (Each: any) => {
+        await api.user.updateAvatar(user._id, { avatar: getAvatarName(Each) }).then(() => {
+            dispatch(updateAvatar(getAvatarName(Each)));
+        }).catch(err => Alert.alert("Errore", err));
+    };
 
     const element = SVGsArray.map((Each) =>
-        <TouchableOpacity onPress={() => dispatch(updateAvatar(getAvatarName(Each)))}>
+        <TouchableOpacity onPress={() => { callUpdateAvatar(Each); }}>
             <Each style={getAvatarName(Each) === avatar ? styles.selectedAvatar : styles.shadowAvatar} width={100} height={100} />
         </TouchableOpacity >
     );
@@ -94,7 +105,7 @@ const styles = StyleSheet.create({
     selectedAvatar: {
         opacity: 0.7,
         borderWidth: 2,
-        borderColor: "black",
+        borderColor: 'black',
         borderRadius: 50,
-    }
+    },
 });

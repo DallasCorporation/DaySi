@@ -2,25 +2,29 @@ import { createSlice } from '@reduxjs/toolkit';
 import { UserState } from '../interfaces/ReduxInterface';
 
 
+const initialState = {
+  avatar: 'Avatar0',
+  surname: '',
+  name: '',
+  email: '',
+  logged: false,
+} as UserState;
+
 export const userSlice = createSlice({
   name: 'user',
-  initialState: {
-    avatar: 'Avatar1',
-    surname: 'Dallas',
-    name: 'Emanuele',
-    email: 'lele@email.com',
-    logged: false,
-  } as UserState,
+  initialState,
+
   reducers: {
     updateUser: (state, action) => {
-      return { ...action.payload, logged: true, avatar: 'Avatar1', }
+      return { ...action.payload, logged: true };
     },
     updateAvatar: (state, action) => {
       state.avatar = action.payload;
     },
+    logout: () => initialState,
   },
 });
 
-export const { updateAvatar, updateUser } = userSlice.actions;
+export const { updateAvatar, updateUser, logout } = userSlice.actions;
 
 export default userSlice.reducer;

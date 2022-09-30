@@ -8,7 +8,7 @@ const ProfileHeader = ({ handleClick, ...props }:any) => {
   const { user } = props;
   const [name, setName] = useState(user.name);
   const [surname, setSurname] = useState(user.surname);
-  const [phone, setPhone] = useState(user.phone);
+  const [email, setEmail] = useState(user.email);
   const [edit, setEdit] = useState(true);
 
   const renderAvatar = (Item: any) => <Item width={200} height={200} />;
@@ -48,22 +48,22 @@ const ProfileHeader = ({ handleClick, ...props }:any) => {
         onChangeText={(val) => setSurname(val)}
       />
       <Input
-        placeholder="Numero di Telefono"
-        value={phone}
+        placeholder="Email"
+        value={email}
         style={styles.input}
         size="large"
         disabled={edit}
-        label={'Numero di Telefono'}
+        label={'Email'}
         status="info"
         accessoryLeft={<IconFont name={'i-shenhe'} size={25} />}
-        onChangeText={(val) => setPhone(val)}
+        onChangeText={(val) => setEmail(val)}
       />
 
       <Button
         size="large"
         status="info"
         appearance="outline"
-        accessoryLeft={<IconFont name={'i-shenhe'} size={25} color={'white'} />}
+        accessoryRight={<IconFont name={'i-bianji'} size={25} color={'blue'} />}
         onPress={() => { setEdit(!edit); }} style={[styles.input, { borderRadius: 10 }]}>{edit ? 'Modifica' : 'Aggiorna'}
       </Button>
     </View>

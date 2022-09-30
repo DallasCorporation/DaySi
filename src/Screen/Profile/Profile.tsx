@@ -8,15 +8,15 @@ const Profile = () => {
   const avatar = useAppSelector((state) => state.user.avatar);
   const user = useAppSelector((state) => state.user);
   const bottomSheetRef = useRef<any>(null);
-  const [status, setStatus] = useState(-1)
+  const [status, setStatus] = useState(-1);
 
   const handleClick = () => {
     bottomSheetRef.current?.snapToIndex(0);
-    setStatus(0)
+    setStatus(0);
   };
   const close = () => {
     bottomSheetRef.current?.close();
-    setStatus(-1)
+    setStatus(-1);
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -32,7 +32,6 @@ const Profile = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: mainGreen,
   },
 
 });

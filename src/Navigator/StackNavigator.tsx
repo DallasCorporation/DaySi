@@ -9,11 +9,11 @@ const Stack = createStackNavigator();
 const StackNavigator = () => {
     const navigation = useNavigation();
 
-  const route = useRoute();
-  console.log(route, navigation);
+    const route = useRoute();
+    console.log(route, navigation);
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Root2" component={MyTabs} options={{ headerShown: false, }} />
+            <Stack.Screen name="Root" component={MyTabs} />
         </Stack.Navigator>
     );
 };

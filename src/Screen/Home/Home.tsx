@@ -34,16 +34,19 @@ const Home = () => {
     ];
     return (
         <SafeAreaView style={styles().container}>
-            <ScrollView style={styles().container} persistentScrollbar={true} >
+            <ScrollView style={styles().container} persistentScrollbar={true}
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}>
                 <Text style={styles().titleHome}>Hey Margherita👋</Text>
                 <Text style={styles().subtitleHome}>Stai cercando un servizio?</Text>
-                <ScrollView horizontal>
+                <ScrollView
+                    horizontal
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}>
                     {array.map(el =>
                         <TouchableOpacity key={el} style={styles().containerHome}>
                             <View style={styles().buttonHome}>
-                                <Text />
-                                <Text />
-                                <Text />
+
                             </View>
                             <Text style={{ fontSize: 12, fontWeight: 'bold', textAlign: 'center' }}>{el}</Text>
                         </TouchableOpacity>
@@ -73,6 +76,7 @@ const Home = () => {
 const styles = () => StyleSheet.create({
     container: {
         flex: 1,
+        paddingTop:10,
         backgroundColor: white,
     },
     titleHome: {

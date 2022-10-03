@@ -1,6 +1,6 @@
 
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
-import { Avatar, Icon, Text } from '@ui-kitten/components';
+import { Avatar, Icon, Layout, Text, Toggle } from '@ui-kitten/components';
 import * as React from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,25 +16,33 @@ const renderAvatar = (Item: any) => <Item width={70} height={90} />;
 
 const CustomDrawer = (props: any) => {
     const dispatch = useDispatch();
-    const { user } = props;
-    // console.log(user);
+    const { user, toggleTheme, light } = props;
     return (
-        <View style={{ flex: 1 }}>
+        <Layout style={{ flex: 1 }}>
             <DrawerContentScrollView {...props}>
-                <View style={styles.drawerView}>
-                    <View>
-                        <Text>{user.name}</Text>
-                        <Text>{user.email}</Text>
+                <View>
+                    <View style={styles.drawerView}>
+                        <View>
+                            <Text>{user.name}</Text>
+                            <Text>{user.email}</Text>
+                        </View>
+                        <Avatar style={styles.avatar} size="large" ImageComponent={() => renderAvatar(avatars[user.avatar])} />
                     </View>
-                    <Avatar style={styles.avatar} size="large" ImageComponent={() => renderAvatar(avatars[user.avatar])} />
+                    <Toggle style={{ position: "absolute", bottom: 25 }}
+                        status='primary'
+                        checked={!light}
+                        onChange={() => toggleTheme((old: boolean) => !old)}>
+                        Dark mode
+                    </Toggle>
                 </View>
                 <DrawerItemList {...props} />
             </DrawerContentScrollView>
+
             <TouchableOpacity style={styles.logout} onPress={() => dispatch(logout())}>
                 <IconFont name={'i-exit'} size={24} color={'red'} style={{ marginRight: 25 }} />
                 <Text status="danger">Log Out</Text>
             </TouchableOpacity>
-        </View>
+        </Layout>
     );
 };
 
@@ -48,7 +56,7 @@ const IconSimpleUsageShowcase = (navigation: any) => {
     </TouchableOpacity >;
 };
 
-const DrawerNavigator = () => {
+const DrawerNavigator = ({ toggleTheme, light }: any) => {
     const user = useSelector((state: any) => state.user);
     const Drawer = createDrawerNavigator();
 
@@ -64,7 +72,7 @@ const DrawerNavigator = () => {
                     shadowOpacity: 0,
                 },
             }}
-            drawerContent={props => <CustomDrawer user={user} {...props} />}
+            drawerContent={props => <CustomDrawer light={light} toggleTheme={toggleTheme} user={user} {...props} />}
         >
             <Drawer.Screen component={MyTabs} name="DashBoard"
                 options={{
@@ -82,23 +90,15 @@ const DrawerNavigator = () => {
             <Drawer.Screen component={Chat} name="Conversazioni"
                 options={({ navigation }) => ({
                     headerShown: true,
-                    headerStyle:{backgroundColor:"white"},
+                    headerStyle: { backgroundColor: "white" },
                     headerLeft: () => (IconSimpleUsageShowcase(navigation)),
                     drawerIcon: ({ size, color }) => <IconFont name={'i-liaotian'} size={size} color={color} />,
                     headerRight: () => (<IconFont name={'i-liaotian'} color={'blue'} size={20} style={styles.iconFont} />),
                 })} />
-            <Drawer.Screen component={Chat} name="Sicurezza"
-                options={({ navigation }) => ({
-                    headerShown: true,
-                    headerStyle:{backgroundColor:"white"},
-                    headerLeft: () => (IconSimpleUsageShowcase(navigation)),
-                    drawerIcon: ({ size, color }) => <IconFont name={'i-lock'} size={size} color={color} />,
-                    headerRight: () => (<IconFont name={'i-lock'} color={'blue'} size={20} style={styles.iconFont} />),
-                })} />
             <Drawer.Screen component={Settings} name="Impostazioni"
                 options={({ navigation }) => ({
                     headerShown: true,
-                    headerStyle:{backgroundColor:"white"},
+                    headerStyle: { backgroundColor: "white" },
                     headerLeft: () => (IconSimpleUsageShowcase(navigation)),
                     drawerIcon: ({ size, color }) => <IconFont name={'i-shezhi'} size={size} color={color} />,
                     headerRight: () => (<IconFont name={'i-shezhi'} color={'blue'} size={20} style={styles.iconFont} />),

@@ -5,11 +5,11 @@ import LoginNavigation from './LoginNavigation';
 import DrawerNavigator from './DrawerNavigator';
 
 
-const MainNavigator = () => {
+const MainNavigator = ({ toggleTheme, light }: any) => {
     const logged = useSelector((state: any) => state.user.logged);
     return (
         <NavigationContainer>
-            {logged ? <DrawerNavigator /> : <LoginNavigation />}
+            {logged ? <DrawerNavigator toggleTheme={toggleTheme} light={light} /> : <LoginNavigation />}
         </NavigationContainer>
     );
 };

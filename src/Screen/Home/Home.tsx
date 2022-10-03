@@ -1,6 +1,6 @@
 import { Text } from '@ui-kitten/components';
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, View, StyleSheet, ScrollView, Image, TouchableOpacity, Platform } from 'react-native';
+import { SafeAreaView, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { useSelector } from 'react-redux';
 import api from '../../api';
 import { image_1 } from '../../constants/images';
@@ -8,8 +8,9 @@ import { image_2 } from '../../constants/images';
 import { image_3 } from '../../constants/images';
 import { image_4 } from '../../constants/images';
 
-import { white, windowWidth } from '../../constants/theme';
+import { white } from '../../constants/theme';
 import IconFont from '../../iconfont';
+import CategoryCard from './CategoryCard';
 
 const Home = () => {
 
@@ -71,18 +72,7 @@ const Home = () => {
                 </ScrollView>
                 <ScrollView style={{ marginTop: 15 }}>
                     {mainCategory.map(el =>
-                        <View key={el.name} style={styles().mainCategory}>
-                            <View>
-                                <Text style={{ fontSize: 25, color: '#9C841C8C', fontWeight: 'bold' }}>{el.name}</Text>
-                                <Text style={{ fontSize: 15, color: 'black' }}>{el.desc}</Text>
-                                <TouchableOpacity style={{ marginTop: 10, width: 138, height: 39, backgroundColor: '#DAB741', borderRadius: 10, justifyContent: 'center' }}>
-                                    <Text style={{ textAlign: 'center', color: 'white' }}>Cerca ora</Text>
-                                </TouchableOpacity>
-                            </View>
-                            <View>
-                                <Image source={el.img} style={{ width: 140, height: 140 }} />
-                            </View>
-                        </View>
+                        <CategoryCard key={el.name} element={el} />
                     )}
                 </ScrollView>
             </ScrollView>
@@ -124,26 +114,5 @@ const styles = () => StyleSheet.create({
     containerHome: {
         marginHorizontal: 10,
     },
-    mainCategory: {
-        width: windowWidth - 50,
-        backgroundColor: 'white',
-        height: 165,
-        alignSelf: 'center',
-        borderRadius: 20,
-        marginBottom: 20,
-        padding: 25,
-        flexDirection: 'row',
-        ...Platform.select({
-            ios: {
-                shadowColor: '#000',
-                shadowOffset: { width: 0, height: 5 },
-                shadowOpacity: 0.5,
-                shadowRadius: 5,
-            },
-            android: {
-                elevation: 10,
-            },
-        }),
-    }
 });
 export default Home;

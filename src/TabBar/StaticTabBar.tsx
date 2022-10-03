@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { View, StyleSheet, TouchableWithoutFeedback, Animated, Dimensions } from 'react-native';
+import { View, StyleSheet, TouchableWithoutFeedback, Animated, Dimensions, Platform } from 'react-native';
 const { width } = Dimensions.get('window');
 import IconFont from '../iconfont';
 
@@ -102,6 +102,17 @@ const styles = StyleSheet.create({
         height: 60,
         borderRadius: 50,
         marginBottom: 30,
+        ...Platform.select({
+            ios: {
+                shadowColor: '#000',
+                shadowOffset: { width: 0, height: 4 },
+                shadowOpacity: 0.7,
+                shadowRadius: 5,
+            },
+            android: {
+                elevation: 10,
+            },
+        }),
     },
     labelStyle: {
         fontSize: 11,

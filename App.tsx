@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -19,13 +19,17 @@ import MainNavigator from './src/Navigator/MainNavigator';
 // };
 
 const App = () => {
-  
+  const [light, setToggle] = useState(true);
+  const toggleTheme = () => {
+    // 🌞 -> 🌚
+    setToggle(!light);
+  };
   return (
     <Provider store={store}>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <IconRegistry icons={EvaIconsPack} />
-        <ApplicationProvider {...eva} theme={eva.light}>
-          <MainNavigator />
+        <ApplicationProvider {...eva} theme={light ? eva.light : eva.dark}>
+          <MainNavigator toggleTheme={toggleTheme} light={light}/>
         </ApplicationProvider>
       </GestureHandlerRootView>
     </Provider>

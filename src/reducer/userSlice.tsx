@@ -8,6 +8,7 @@ const initialState = {
   name: '',
   email: '',
   logged: false,
+  themeLight: true,
 } as UserState;
 
 export const userSlice = createSlice({
@@ -21,10 +22,13 @@ export const userSlice = createSlice({
     updateAvatar: (state, action) => {
       state.avatar = action.payload;
     },
+    changeTheme: (state, action) => {
+      state.themeLight = action.payload;
+    },
     logout: () => initialState,
   },
 });
 
-export const { updateAvatar, updateUser, logout } = userSlice.actions;
+export const { updateAvatar, updateUser, logout, changeTheme } = userSlice.actions;
 
 export default userSlice.reducer;

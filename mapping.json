@@ -1,0 +1,18 @@
+{
+    "components": {
+        "Toggle": {
+            "appearances": {
+                "default": {
+                    "mapping": {
+                        "width": 22,
+                        "height": 12,
+                        "thumbWidth": 8,
+                        "thumbHeight": 8,
+                        "outlineWidth": 8,
+                        "outlineHeight": 12
+                    }
+                }
+            }
+        }
+    }
+}

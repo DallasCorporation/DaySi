@@ -1,3 +1,4 @@
+
 import { Text } from '@ui-kitten/components';
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
@@ -8,25 +9,28 @@ import { image_2 } from '../../constants/images';
 import { image_3 } from '../../constants/images';
 import { image_4 } from '../../constants/images';
 
-import { white } from '../../constants/theme';
+import { black, white } from '../../constants/theme';
 import IconFont from '../../iconfont';
 import CategoryCard from './CategoryCard';
 
 const Home = () => {
-
     const user = useSelector((state: any) => state.user);
+    const [light, setLight] = useState(false);
     const [categories, setCategories] = useState<any>([]);
     const fetch = async () => {
         await api.category.getAll().then(res => {
             setCategories(res);
             setCategories(res);
-            console.log(res);
         });
     };
 
     useEffect(() => {
         fetch();
     }, []);
+
+    useEffect(() => {
+        setLight(user.themeLight);
+    }, [user]);
 
     let mainCategory = [
         {
@@ -51,8 +55,8 @@ const Home = () => {
         },
     ];
     return (
-        <SafeAreaView style={styles().container}>
-            <ScrollView style={styles().container} persistentScrollbar={true}
+        <SafeAreaView style={{flex: 1,}}>
+            <ScrollView style={styles(light).container} persistentScrollbar={true}
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}>
                 <Text style={styles().titleHome}>Hey {user.name}👋</Text>
@@ -66,7 +70,7 @@ const Home = () => {
                             <TouchableOpacity style={styles().buttonHome}>
                                 <IconFont name={el.icon} size={38} />
                             </TouchableOpacity>
-                            <Text category='s2' style={styles().textButton}>{el.name}</Text>
+                            <Text category="s2" style={styles().textButton}>{el.name}</Text>
                         </View>
                     )}
                 </ScrollView>
@@ -76,15 +80,15 @@ const Home = () => {
                     )}
                 </ScrollView>
             </ScrollView>
-        </SafeAreaView>
+        </SafeAreaView >
     );
 };
 
-const styles = () => StyleSheet.create({
+const styles = (light: any) => StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: 10,
-        backgroundColor: white,
+        backgroundColor: light ? "rgba(255,255,255,0.05)" : 'rgba(0,0,0,0.9)',
     },
     titleHome: {
         marginLeft: 20,

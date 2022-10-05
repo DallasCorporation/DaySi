@@ -9,7 +9,7 @@ const MainNavigator = ({ toggleTheme, light }: any) => {
     const logged = useSelector((state: any) => state.user.logged);
     return (
         <NavigationContainer>
-            {logged ? <DrawerNavigator toggleTheme={toggleTheme} light={light} /> : <LoginNavigation />}
+            {!logged ? <DrawerNavigator toggleTheme={toggleTheme} light={light} /> : <LoginNavigation />}
         </NavigationContainer>
     );
 };

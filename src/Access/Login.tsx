@@ -14,6 +14,7 @@ const Login = ({ navigation }: any) => {
             email,
             password,
         };
+        console.log(data)
         await api.user.login(data).then(res => {
             dispatch(dispatch(updateUser(res)));
         });

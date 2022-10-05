@@ -47,10 +47,10 @@ const Settings = () => {
                     <Layout style={styles.layout} level="4">
                         <View style={styles.container}>
                             <SettingsCard name="Lingua" icon="i-language" onClick={openDrawerLanguage} />
-                            <SettingsCard name="Notifiche" icon="i-riqi" />
+                            <SettingsCard name="Notifiche" icon="i-hanhan-01-011" />
                             <SettingsCard name="Tema" icon="i-fenlei" />
                             <SettingsCard name="Termini di servizio" icon="i-zixun" />
-                            <SettingsCard name="Supporto" icon="i-liaotian" onClick={mailTo} />
+                            <SettingsCard name="Supporto" icon="i-hanhan-01-01" onClick={mailTo} />
                             <SettingsCard name="Invita un amico" icon="i-invite" onClick={share} />
                         </View>
                     </Layout>
@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: '100%',
-        paddingHorizontal: 30,
     },
     layout: {
         alignItems: 'center',

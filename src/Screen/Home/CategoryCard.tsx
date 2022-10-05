@@ -8,14 +8,14 @@ const CategoryCard = ({ element }: any) => {
 
     return (
         <View key={element.name} style={styles().mainCategory}>
-            <View>
+            <View >
                 <Text style={styles().title}>{element.name}</Text>
                 <Text style={styles().description}>{element.desc}</Text>
                 <TouchableOpacity style={styles().button}>
                     <Text style={styles().buttonText}>Cerca ora</Text>
                 </TouchableOpacity>
             </View>
-            <View>
+            <View style={{ alignItems: 'flex-end' }}>
                 <Image source={element.img} style={styles().image} />
             </View>
         </View>
@@ -26,13 +26,15 @@ export default CategoryCard;
 
 const styles = () => StyleSheet.create({
     mainCategory: {
-        width: windowWidth - 50,
         backgroundColor: 'white',
+        width: windowWidth - 50,
         height: 165,
-        alignSelf: 'center',
         borderRadius: 20,
         marginBottom: 20,
-        padding: 25,
+        paddingHorizontal:20,
+        alignItems: 'center',
+        alignSelf: 'center',
+        justifyContent: 'space-between',
         flexDirection: 'row',
         ...Platform.select({
             ios: {

@@ -1,7 +1,12 @@
 import axios from "axios";
+import { Platform } from "react-native";
 
-const API_URL = "http://localhost:3000/api";
+const API_URL = Platform.select({
+    ios: () => "http://localhost:3000/api",
+    android: () => "http://192.168.1.228:3000/api"
+})();
 
+console.log(API_URL)
 export default {
     user: {
         login: (credentials) =>
@@ -29,6 +34,8 @@ export default {
             axios.put(`${API_URL}/user/${id}`, data),
         updateAvatar: (id, data) =>
             axios.put(`${API_URL}/userAvatar/${id}`, data),
+        updateTheme: (id, data) =>
+            axios.put(`${API_URL}/userTheme/${id}`, data),
         updatePassword: (id, data) =>
             axios.put(`${API_URL}/user/password/${id}`, data),
         delete: (id) => {

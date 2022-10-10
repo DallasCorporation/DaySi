@@ -3,6 +3,7 @@ import { SafeAreaView, StyleSheet, Dimensions, View, Animated } from 'react-nati
 import * as shape from 'd3-shape';
 import Svg, { Path } from 'react-native-svg';
 import StaticTabBar from './StaticTabBar';
+import { Layout } from '@ui-kitten/components';
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 const { width } = Dimensions.get('window');
 const height = 64;
@@ -57,7 +58,8 @@ const getPath = () => {
 const d = getPath();
 
 interface Props {
-    navigation: any
+    navigation: any,
+    isLight: boolean
 }
 
 export default class TabBar extends React.PureComponent<Props> {
@@ -68,7 +70,7 @@ export default class TabBar extends React.PureComponent<Props> {
     }
     render() {
         const { value } = this;
-        const { navigation } = this.props;
+        const { navigation, isLight } = this.props;
         const translateX = value.interpolate({
             inputRange: [0, width],
             outputRange: [-width, 0],
@@ -77,17 +79,17 @@ export default class TabBar extends React.PureComponent<Props> {
             React.createElement(React.Fragment, null,
                 React.createElement(View, Object.assign({}, { height, width }),
                     React.createElement(AnimatedSvg, Object.assign({ width: width * 2 }, { height }, { style: { transform: [{ translateX }] } }),
-                        React.createElement(Path, Object.assign({ fill: backgroundColor }, { d }))),
+                        React.createElement(Path, Object.assign({ fill: isLight ? "white" : "black" }, { d }))),
                     React.createElement(View, { style: StyleSheet.absoluteFill },
-                        React.createElement(StaticTabBar, Object.assign({}, { navigation, tabs, value })))
+                        React.createElement(StaticTabBar, Object.assign({}, { navigation, tabs, value, isLight })))
                 ),
-                React.createElement(SafeAreaView, { style: styles.container })
+                React.createElement(SafeAreaView, { style: styles(isLight).container })
             )
         );
     }
 }
-const styles = StyleSheet.create({
+const styles = (isLight: boolean) => StyleSheet.create({
     container: {
-        backgroundColor,
+        backgroundColor: isLight ? "white" : "black",
     },
 });

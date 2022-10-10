@@ -1,7 +1,7 @@
-import { View, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import React, { Ref, useMemo } from 'react';
-import { Icon, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { Icon, Layout, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
 import IconFont from '../iconfont';
 import { SVGsFlagsArray } from '../assets/exportFlags';
@@ -23,7 +23,7 @@ const FlagDrawer = ({ status, setStatus, bottomSheetRef, close }: ProfileDrawerP
 
     const renderRightActions = () => <TopNavigationAction icon={
         <TouchableOpacity>
-            <IconFont name="i-language" size={25}  />
+            <IconFont name="i-language" size={25} />
         </TouchableOpacity>
     }
     />;
@@ -49,7 +49,7 @@ const FlagDrawer = ({ status, setStatus, bottomSheetRef, close }: ProfileDrawerP
                     animatedIndex={{ value: status }}
                 />}
         >
-            <View>
+            <Layout style={{ flex: 1 }}>
                 <TopNavigation
                     alignment="center"
                     title="Aggiorna la lingua dell'app"
@@ -64,7 +64,7 @@ const FlagDrawer = ({ status, setStatus, bottomSheetRef, close }: ProfileDrawerP
                     style={styles.flatList}
                     columnWrapperStyle={styles.columns}
                 />
-            </View>
+            </Layout>
         </BottomSheet >
     )
 }
@@ -73,12 +73,12 @@ export default FlagDrawer
 
 const styles = StyleSheet.create({
     flatList: {
-        paddingTop: 10,
+        paddingTop: 0,
         paddingHorizontal: 20,
         marginBottom: 55,
     },
     columns: {
-        marginBottom: 10,
+        marginVertical: 10,
         justifyContent: 'space-between',
     },
     shadowAvatar: {

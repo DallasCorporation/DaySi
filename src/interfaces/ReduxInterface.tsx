@@ -3,5 +3,5 @@ export interface UserState {
   name: string,
   surname: string,
   email: string,
-  themeLight: boolean
+  lightTheme: boolean
 }

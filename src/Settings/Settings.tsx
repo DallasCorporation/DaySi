@@ -1,20 +1,35 @@
-import { Platform, SafeAreaView, Share, StyleSheet, View, Linking } from 'react-native';
+import { Platform, SafeAreaView, Share, StyleSheet, Linking } from 'react-native';
 import React, { useRef, useState } from 'react';
 import { Layout, Tab, TabView, Text } from '@ui-kitten/components';
 import SettingsCard from './SettingsCard';
 import FlagDrawer from './FlagDrawer';
-const Settings = () => {
+import ThemeDrawer from './ThemeDrawer';
+const Settings = (props: any) => {
+    const { toggleTheme } = props
     const [selectedIndex, setSelectedIndex] = React.useState(0);
-    const bottomSheetRef = useRef<any>(null);
-    const [status, setStatus] = useState(-1);
+    const languageBottomSheetRef = useRef<any>(null);
+    const themeBottomSheetRef = useRef<any>(null);
+    const [languageDrawerStatus, setLanguageDrawerStatus] = useState(-1);
+    const [themeDrawerStatus, setThemeDrawerStatus] = useState(-1);
 
     const openDrawerLanguage = () => {
-        bottomSheetRef.current?.snapToIndex(0);
-        setStatus(0);
+        languageBottomSheetRef.current?.snapToIndex(0);
+        setLanguageDrawerStatus(0);
     };
-    const close = () => {
-        bottomSheetRef.current?.close();
-        setStatus(-1);
+
+    const openDrawerTheme = () => {
+        themeBottomSheetRef.current?.snapToIndex(0);
+        setThemeDrawerStatus(0);
+    };
+
+    const closeLanguage = () => {
+        languageBottomSheetRef.current?.close();
+        setLanguageDrawerStatus(-1);
+    };
+
+    const closeTheme = () => {
+        themeBottomSheetRef.current?.close();
+        setThemeDrawerStatus(-1);
     };
     const share = async () => {
         try {
@@ -45,26 +60,27 @@ const Settings = () => {
                 onSelect={index => setSelectedIndex(index)}>
                 <Tab title={({ style }: any) => <Text category="s2" style={{ padding: 10, fontSize: 16, color: style.color }} >Generali</Text>}>
                     <Layout style={styles.layout} level="4">
-                        <View style={styles.container}>
+                        <SafeAreaView style={styles.container}>
                             <SettingsCard name="Lingua" icon="i-language" onClick={openDrawerLanguage} />
                             <SettingsCard name="Notifiche" icon="i-hanhan-01-011" />
-                            <SettingsCard name="Tema" icon="i-fenlei" />
+                            <SettingsCard name="Tema" icon="i-fenlei" onClick={openDrawerTheme} />
                             <SettingsCard name="Termini di servizio" icon="i-zixun" />
                             <SettingsCard name="Supporto" icon="i-hanhan-01-01" onClick={mailTo} />
                             <SettingsCard name="Invita un amico" icon="i-invite" onClick={share} />
-                        </View>
+                        </SafeAreaView>
                     </Layout>
                 </Tab>
                 <Tab title={({ style }: any) => <Text category="s2" style={{ padding: 10, fontSize: 16, color: style.color }} >Account</Text>}>
                     <Layout style={styles.layout} level="4">
-                        <View style={styles.container}>
+                        <SafeAreaView style={styles.container}>
                             <SettingsCard name="Cambia Password" icon="i-lock" />
                             <SettingsCard name="Elimina il mio account" icon="i-shanchu" color="red" />
-                        </View>
+                        </SafeAreaView>
                     </Layout>
                 </Tab>
             </TabView>
-            <FlagDrawer setStatus={setStatus} status={status} bottomSheetRef={bottomSheetRef} close={close} />
+            <FlagDrawer setStatus={setLanguageDrawerStatus} status={languageDrawerStatus} bottomSheetRef={languageBottomSheetRef} close={closeLanguage} />
+            <ThemeDrawer toggleTheme={toggleTheme} setStatus={setThemeDrawerStatus} status={themeDrawerStatus} bottomSheetRef={themeBottomSheetRef} close={closeTheme} />
 
         </SafeAreaView>
     );
@@ -80,6 +96,7 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     layout: {
+        paddingTop: 20,
         alignItems: 'center',
         justifyContent: 'center',
         height: '100%',

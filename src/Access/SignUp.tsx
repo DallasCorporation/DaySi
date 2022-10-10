@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Alert, Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { Avatar, Button, Icon, Input, Text } from '@ui-kitten/components';
+import { Avatar, Button, Icon, Input, Layout, Text } from '@ui-kitten/components';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import avatars from '../assets/exportAvatar';
@@ -72,20 +72,20 @@ const SignUp = ({ navigation }: any) => {
 
     return (
         <SafeAreaView style={styles.safeArea}>
-            <View style={styles.mainView}>
+            <Layout style={styles.mainView}>
                 <View style={styles.userIcon}>
                     <Avatar style={styles.avatar} size="large" ImageComponent={() => renderAvatar(avatars.Avatar0)} />
                 </View>
-                <View style={styles.text}>
+                <Layout style={styles.text}>
                     <Text category="h6">Registrati a DaySì ora!</Text>
 
-                    <View style={{ flexDirection: 'row' }}>
+                    <Layout style={{ flexDirection: 'row' }}>
                         <Text category="c2">Possiedi un account? </Text>
-                        <TouchableOpacity><Text category="c2">Premi qui!</Text></TouchableOpacity>
-                    </View>
-                </View>
+                        <TouchableOpacity onPress={() => navigation.navigate('Login')}><Text category="c2">Premi qui!</Text></TouchableOpacity>
+                    </Layout>
+                </Layout>
 
-                <View style={styles.form} >
+                <Layout style={styles.form} >
                     <Input
                         value={name}
                         size="small"
@@ -137,35 +137,40 @@ const SignUp = ({ navigation }: any) => {
                         // accessoryRight={LoginIcon}
                         onPress={() => submit()}
                         appearance="outline"
-                        status='warning'
                         size="small"
                         style={[styles.formEntry, { borderRadius: 20 }]}>Registrati</Button>
-                </View>
-            </View>
-            <View style={styles.options}>
-                <TouchableOpacity style={styles.rounded} >
-                    <Icon
-                        style={styles.icon}
-                        fill="#f8c11c"
-                        name="google-outline"
-                    />
+                </Layout>
+            </Layout>
+            <Layout style={styles.options}>
+                <TouchableOpacity style={{ flex: 1 }} >
+                    <Layout style={styles.rounded} level='1'>
+                        <Icon
+                            style={styles.icon}
+                            fill="#00eafd"
+                            name="google-outline"
+                        />
+                    </Layout>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.rounded} onPress={() => navigation.navigate('Login', { name: 'Jane' })}>
-                    <Icon
-                        style={styles.icon}
-                        fill="#f8c11c"
-                        name="person-add-outline"
-                    />
+                <TouchableOpacity style={{ flex: 1 }} onPress={() => navigation.navigate('Login')}>
+                    <Layout style={styles.rounded} level='1'>
+                        <Icon
+                            style={styles.icon}
+                            fill="#00eafd"
+                            name="log-in-outline"
+                        />
+                    </Layout>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.rounded} onPress={() => { }}>
-                    <Icon
-                        style={styles.icon}
-                        fill="#f8c11c"
-                        animation="pulse"
-                        name="close-circle-outline"
-                    />
+                <TouchableOpacity style={{ flex: 1 }} onPress={() => { }}>
+                    <Layout style={styles.rounded} level='1'>
+                        <Icon
+                            style={styles.icon}
+                            fill="#00eafd"
+                            animation="pulse"
+                            name="close-circle-outline"
+                        />
+                    </Layout>
                 </TouchableOpacity>
-            </View>
+            </Layout>
         </SafeAreaView >
     );
 };
@@ -182,7 +187,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#e5eafd',
     },
     mainView: {
-        backgroundColor: '#FFF',
+        // backgroundColor: '#FFF',
         width: '80%',
         flex: 0.8,
         borderRadius: 30,
@@ -220,7 +225,7 @@ const styles = StyleSheet.create({
         height: 180,
     },
     text: {
-        marginTop: 22,
+        marginTop: 8,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -236,7 +241,6 @@ const styles = StyleSheet.create({
     options: {
         justifyContent: 'space-between',
         flexDirection: 'row',
-        backgroundColor: '#FFF',
         width: '80%',
         flex: 0.14,
         marginTop: 22,
@@ -257,7 +261,6 @@ const styles = StyleSheet.create({
     rounded: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#FFF',
         flex: 1,
         margin: 15,
         borderRadius: 50,

@@ -16,14 +16,11 @@ import api from '../api';
 
 const renderAvatar = (Item: any) => <Item width={70} height={90} />;
 
-
-
 const CustomDrawer = (props: any) => {
     const dispatch = useDispatch();
     const updateTheme = async (light: boolean) => {
-       await api.user.updateTheme(user._id, { themeLight: light }).then(() =>
-            dispatch(changeTheme(light))
-        );
+        dispatch(changeTheme(light));
+        await api.user.updateTheme(user._id, { lightTheme: light });
     };
     const { user, toggleTheme, light } = props;
     return (
@@ -37,15 +34,18 @@ const CustomDrawer = (props: any) => {
                         </View>
                         <Avatar style={styles.avatar} size="large" ImageComponent={() => renderAvatar(avatars[user.avatar])} />
                     </Layout>
-                    <Toggle style={{ position: 'absolute', bottom: 25 }}
-                        status="basic"
-                        checked={!user.themeLight}
-                        onChange={() => {
-                            updateTheme(!light);
-                            toggleTheme((old: boolean) => !old);
-                        }}>
-                        Dark mode
-                    </Toggle>
+                    <View style={{ flexDirection: 'row', position: 'absolute', bottom: 25, right: 20 }}>
+                        <Text>🌞</Text>
+                        <Toggle
+                            status="basic"
+                            checked={!user.lightTheme}
+                            onChange={() => {
+                                updateTheme(!light);
+                                toggleTheme((old: boolean) => !old);
+                            }}
+                        />
+                        <Text>🌚</Text>
+                    </View>
                 </Layout>
                 <DrawerItemList {...props} />
             </DrawerContentScrollView>
@@ -59,11 +59,11 @@ const CustomDrawer = (props: any) => {
     );
 };
 
-const IconSimpleUsageShowcase = (navigation: any) => {
+const IconSimpleUsageShowcase = (navigation: any, light: boolean) => {
     return <TouchableOpacity onPress={() => navigation.openDrawer()}>
         <Icon
             name="menu-2-outline"
-            fill="#00F"
+            fill={light ? '#00F' : '#FFF'}
             style={styles.icon}
         />
     </TouchableOpacity >;
@@ -78,14 +78,15 @@ const DrawerNavigator = ({ toggleTheme, light }: any) => {
         <Drawer.Navigator
             initialRouteName="Home"
             screenOptions={{
+                headerTitle: props => <Text category="s1">{props.children}</Text>,
                 headerShown: false,
                 headerStyle: {
                     backgroundColor: 'transparent',
                     elevation: 0,
                     shadowOpacity: 0,
                 },
-                drawerActiveTintColor: light ? 'blue' : 'white',
-                drawerInactiveTintColor: light ? 'blue' : 'white',
+                drawerActiveTintColor: light ? '#4253ff' : 'white',
+                drawerInactiveTintColor: light ? '#4253ff' : 'white',
             }}
             drawerContent={props => <CustomDrawer light={light} toggleTheme={toggleTheme} user={user} {...props} />}
         >
@@ -97,26 +98,27 @@ const DrawerNavigator = ({ toggleTheme, light }: any) => {
             <Drawer.Screen component={Booking} name="Prenotazioni"
                 options={({ navigation }) => ({
                     headerShown: true,
-                    headerStyle: { backgroundColor: 'white' },
-                    headerLeft: () => (IconSimpleUsageShowcase(navigation)),
+                    headerStyle: { backgroundColor: light ? 'white' : 'black' },
+                    headerLeft: () => (IconSimpleUsageShowcase(navigation, light)),
                     drawerIcon: ({ size, color }) => <IconFont name={'i-riqi'} size={size} color={color} />,
+                    headerRight: () => (<IconFont name={'i-riqi'} color={light ? '#4253ff' : 'white'} size={20} style={styles.iconFont} />),
                 })}
             />
             <Drawer.Screen component={Chat} name="Conversazioni"
                 options={({ navigation }) => ({
                     headerShown: true,
-                    headerStyle: { backgroundColor: 'white' },
-                    headerLeft: () => (IconSimpleUsageShowcase(navigation)),
+                    headerStyle: { backgroundColor: light ? 'white' : 'black' },
+                    headerLeft: () => (IconSimpleUsageShowcase(navigation, light)),
                     drawerIcon: ({ size, color }) => <IconFont name={'i-liaotian'} size={size} color={color} />,
-                    headerRight: () => (<IconFont name={'i-liaotian'} color={'blue'} size={20} style={styles.iconFont} />),
+                    headerRight: () => (<IconFont name={'i-liaotian'} color={light ? '#4253ff' : 'white'} size={20} style={styles.iconFont} />),
                 })} />
-            <Drawer.Screen component={Settings} name="Impostazioni"
+            <Drawer.Screen children={()=> <Settings toggleTheme={toggleTheme}/>}  name="Impostazioni"
                 options={({ navigation }) => ({
                     headerShown: true,
-                    headerStyle: { backgroundColor: 'white' },
-                    headerLeft: () => (IconSimpleUsageShowcase(navigation)),
+                    headerStyle: { backgroundColor: light ? 'white' : 'black' },
+                    headerLeft: () => (IconSimpleUsageShowcase(navigation, light)),
                     drawerIcon: ({ size, color }) => <IconFont name={'i-shezhi'} size={size} color={color} />,
-                    headerRight: () => (<IconFont name={'i-shezhi'} color={'blue'} size={20} style={styles.iconFont} />),
+                    headerRight: () => (<IconFont name={'i-shezhi'} color={light ? '#4253ff' : 'white'} size={20} style={styles.iconFont} />),
                 })} />
         </Drawer.Navigator>
     );

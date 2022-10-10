@@ -3,6 +3,7 @@ import { SafeAreaView, View, StyleSheet, ScrollView } from 'react-native';
 import ProfileHeader from './ProfileHeader';
 import ProfileDrawer from './ProfileDrawer';
 import { useAppSelector } from '../../store/store';
+import { Layout } from '@ui-kitten/components';
 
 const Profile = () => {
   const avatar = useAppSelector((state) => state.user.avatar);
@@ -20,11 +21,9 @@ const Profile = () => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.container}>
-        <View>
-          <ProfileHeader user={user} avatar={avatar} handleClick={handleClick} />
-        </View>
-      </ScrollView>
+      <Layout style={{ flex: 1 }}>
+        <ProfileHeader user={user} avatar={avatar} handleClick={handleClick} />
+      </Layout>
       <ProfileDrawer setStatus={setStatus} status={status} avatar={avatar} bottomSheetRef={bottomSheetRef} close={close} />
     </SafeAreaView>
   );

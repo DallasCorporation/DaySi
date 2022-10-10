@@ -1,7 +1,7 @@
 import { View, StyleSheet, TouchableOpacity, FlatList, Alert } from 'react-native';
 import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import React, { Ref, useMemo } from 'react';
-import { Icon, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { Icon, Layout, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import IconFont from '../../iconfont';
 import avatars, { SVGsArray } from '../../assets/exportAvatar';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,6 +20,7 @@ interface ProfileDrawerProps {
 const ProfileDrawer = ({ bottomSheetRef, close, avatar, status, setStatus }: ProfileDrawerProps) => {
 
     const user = useSelector((state: any) => state.user);
+    const isLight = useSelector((state: any) => state.user.lightTheme);
     const dispatch = useDispatch();
 
     const snapPoints = useMemo(() => ['60%', '100%'], []);
@@ -30,7 +31,7 @@ const ProfileDrawer = ({ bottomSheetRef, close, avatar, status, setStatus }: Pro
 
     const renderRightActions = () => <TopNavigationAction icon={
         <TouchableOpacity>
-            <IconFont name="i-bianxie" size={25} color={'blue'} />
+            <IconFont name="i-bianxie" size={25} color={isLight ? '#4253ff' : 'white'} />
         </TouchableOpacity>
     }
     />;
@@ -65,7 +66,7 @@ const ProfileDrawer = ({ bottomSheetRef, close, avatar, status, setStatus }: Pro
                     animatedIndex={{ value: status }}
                 />}
         >
-            <View>
+            <Layout>
                 <TopNavigation
                     alignment="center"
                     title="Aggiorna il tuo Avatar"
@@ -80,7 +81,7 @@ const ProfileDrawer = ({ bottomSheetRef, close, avatar, status, setStatus }: Pro
                     style={styles.flatList}
                     columnWrapperStyle={styles.columns}
                 />
-            </View>
+            </Layout>
         </BottomSheet >
     );
 };

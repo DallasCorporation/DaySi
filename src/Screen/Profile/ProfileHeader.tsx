@@ -77,7 +77,7 @@ const ProfileHeader = ({ handleClick, ...props }: any) => {
         size="large"
         status="info"
         appearance="outline"
-        accessoryRight={<IconFont name={'i-bianji'} size={25} color={'blue'} />}
+        accessoryRight={<IconFont name={'i-bianji'} size={25} color={'#4253ff'} />}
         onPress={() => { updateInfo() }} style={[styles.input, { borderRadius: 10 }]}>{edit ? 'Modifica' : 'Aggiorna'}
       </Button>
     </View>

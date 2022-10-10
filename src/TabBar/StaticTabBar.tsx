@@ -37,8 +37,8 @@ export default class StaticTabBar extends React.PureComponent {
     }
     render() {
         const { onPress } = this;
-        const { tabs, value } = this.props;
-        return (React.createElement(View, { style: styles.container }, tabs.map((tab, key) => {
+        const { tabs, value, isLight } = this.props;
+        return (React.createElement(View, { style: styles(isLight).container }, tabs.map((tab, key) => {
             const { icon, name, route } = tab;
             const tabWidth = width / tabs.length;
             const cursor = tabWidth * key;
@@ -60,8 +60,8 @@ export default class StaticTabBar extends React.PureComponent {
             return (
                 React.createElement(React.Fragment, Object.assign({}, { key }),
                     React.createElement(TouchableWithoutFeedback, { onPress: () => onPress(key, route) },
-                        React.createElement(Animated.View, { style: [styles.tab, { opacity }] },
-                            <IconFont name={icon} size={25} />)),
+                        React.createElement(Animated.View, { style: [styles(isLight).tab, { opacity }] },
+                            <IconFont name={icon} size={25} color={!isLight ? "white" : "black"} />)),
                     React.createElement(
                         Animated.View, {
                         style: {
@@ -76,15 +76,15 @@ export default class StaticTabBar extends React.PureComponent {
                             transform: [{ translateY }],
                         },
                     },
-                        React.createElement(View, { style: styles.activeIcon },
-                            <IconFont name={icon} size={25} />
+                        React.createElement(View, { style: styles(isLight).activeIcon },
+                            <IconFont name={icon} size={25} color={!isLight ? "white" : "black"} />
                         ))
                 )
             );
         })));
     }
 }
-const styles = StyleSheet.create({
+const styles = (isLight: boolean) => StyleSheet.create({
     container: {
         flexDirection: 'row',
     },
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
         height: 64,
     },
     activeIcon: {
-        backgroundColor: 'white',
+        backgroundColor: isLight ? 'white' : "black",
         justifyContent: 'center',
         alignItems: 'center',
         width: 60,

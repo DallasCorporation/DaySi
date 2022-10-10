@@ -8,7 +8,7 @@ const initialState = {
   name: '',
   email: '',
   logged: false,
-  themeLight: true,
+  lightTheme: true,
 } as UserState;
 
 export const userSlice = createSlice({
@@ -23,7 +23,7 @@ export const userSlice = createSlice({
       state.avatar = action.payload;
     },
     changeTheme: (state, action) => {
-      state.themeLight = action.payload;
+      state.lightTheme = action.payload;
     },
     logout: () => initialState,
   },

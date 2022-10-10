@@ -1,15 +1,13 @@
 
-import { Text } from '@ui-kitten/components';
+import { Layout, Text } from '@ui-kitten/components';
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { SafeAreaView, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { useSelector } from 'react-redux';
 import api from '../../api';
 import { image_1 } from '../../constants/images';
 import { image_2 } from '../../constants/images';
 import { image_3 } from '../../constants/images';
 import { image_4 } from '../../constants/images';
-
-import { black, white } from '../../constants/theme';
 import IconFont from '../../iconfont';
 import CategoryCard from './CategoryCard';
 
@@ -29,7 +27,7 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        setLight(user.themeLight);
+        setLight(user.lightTheme);
     }, [user]);
 
     let mainCategory = [
@@ -55,7 +53,7 @@ const Home = () => {
         },
     ];
     return (
-        <SafeAreaView style={{flex: 1,}}>
+        <SafeAreaView style={{ flex: 1 }}>
             <ScrollView style={styles(light).container} persistentScrollbar={true}
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}>
@@ -66,15 +64,15 @@ const Home = () => {
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}>
                     {categories.map((el: any) =>
-                        <View key={el._id} style={styles().containerHome}>
-                            <TouchableOpacity style={styles().buttonHome}>
-                                <IconFont name={el.icon} size={38} />
-                            </TouchableOpacity>
+                        <TouchableOpacity key={el._id} style={styles().containerHome}>
+                            <Layout level='1' style={styles().buttonHome}>
+                                <IconFont name={el.icon} size={38} color={!light ? "#FFFFFF" : "#000000"} />
+                            </Layout>
                             <Text category="s2" style={styles().textButton}>{el.name}</Text>
-                        </View>
+                        </TouchableOpacity>
                     )}
                 </ScrollView>
-                <ScrollView style={{ marginTop: 15 }}>
+                <ScrollView style={{ paddingTop: 15 }}>
                     {mainCategory.map(el =>
                         <CategoryCard key={el.name} element={el} />
                     )}
@@ -88,7 +86,7 @@ const styles = (light: any) => StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: 10,
-        backgroundColor: light ? "rgba(255,255,255,0.05)" : 'rgba(0,0,0,0.9)',
+        backgroundColor: light ? 'rgba(255,255,255,0.05)' : '#000000',
     },
     titleHome: {
         marginLeft: 20,
@@ -100,7 +98,7 @@ const styles = (light: any) => StyleSheet.create({
         marginBottom: 30,
     },
     buttonHome: {
-        backgroundColor: 'rgba(255,255,255,0.9)',
+        // backgroundColor: 'rgba(255,255,255,0.9)',
         width: 84,
         height: 84,
         borderRadius: 20,

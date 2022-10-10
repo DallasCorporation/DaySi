@@ -1,24 +1,30 @@
-import { Icon, Text } from '@ui-kitten/components';
-import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Icon, Layout, Text } from '@ui-kitten/components';
+import { Platform, StyleSheet, TouchableOpacity } from 'react-native';
 import IconFont from '../iconfont';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const SettingsCard = ({ name, icon, onClick, color }: any) => {
+    const isLight = useSelector((state: any) => state.user.lightTheme);
+    const getColor = () => {
+        if (color) { return color; }
+        if (isLight) { return '#333333'; }
+        return '#FFFFFF';
+    };
+
     return (
         <TouchableOpacity style={styles.containerWhite} onPress={onClick}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginHorizontal:20 }}>
-                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                    <IconFont name={icon} size={24} style={{ marginRight: 15 }} color={color ? color : "#333333"} />
+            <Layout style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderRadius: 8, paddingHorizontal: 20 }}>
+                <Layout style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                    <IconFont name={icon} size={24} style={{ marginRight: 15 }} color={getColor()} />
                     <Text category="s1" >{name}</Text>
-                </View>
-                <Icon fill="#000000" name="arrow-right" style={styles.icon} />
-            </View>
+                </Layout>
+                <Icon fill={isLight ? "#000000" : "#FFFFFF"} name="arrow-right" style={styles.icon} />
+            </Layout>
         </TouchableOpacity>
     );
 };
 export default SettingsCard;
-
-
 
 const styles = StyleSheet.create({
     containerWhite: {
@@ -27,7 +33,6 @@ const styles = StyleSheet.create({
         flex: 1 / 10,
         marginHorizontal: 20,
         marginVertical: 10,
-        backgroundColor: 'white',
         ...Platform.select({
             ios: {
                 shadowColor: '#000',

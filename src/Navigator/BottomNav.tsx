@@ -3,7 +3,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Profile from '../Screen/Profile/Profile';
 import Home from '../Screen/Home/Home';
 import Categories from '../Screen/Categories/Categories';
-import { mainGreen } from '../constants/theme';
 import TabBar from '../TabBar/TabBar';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -16,9 +15,9 @@ const MyTabs = (props: any) => {
   const IconSimpleUsageShowcase = (isLight: boolean) => (
     <TouchableOpacity onPress={() => props.navigation.openDrawer()}>
       <Icon
-        style={styles.icon}
+        style={styles(isLight).icon}
         name="menu-2-outline"
-        fill={isLight ? "#00F" : "#FFF"}
+        fill={isLight ? '#00F' : '#FFF'}
       />
     </TouchableOpacity >
   );
@@ -28,7 +27,7 @@ const MyTabs = (props: any) => {
   const isLight = useSelector((state: any) => state.user.lightTheme);
 
   return (
-    <View style={styles.container}>
+    <View style={styles(isLight).container}>
       <Tab.Navigator
         screenOptions={{
           headerLeft: () => (IconSimpleUsageShowcase(isLight)),
@@ -37,25 +36,25 @@ const MyTabs = (props: any) => {
           },
           tabBarStyle: {
             height: 0,
-            display: "none"
+            display: 'none',
           },
           headerStyle: { backgroundColor: isLight ? 'white' : 'black' },
-          headerTitle: props => <Text category='s1'>{props.children}</Text>,
+          headerTitle: props => <Text category="s1">{props.children}</Text>,
         }}
       >
         <Tab.Screen name="Home" component={Home} options={{
-          headerRight: () => (<IconFont name={'i-dianpu'} color={isLight ? '#4253ff' : 'white'} size={20} style={styles.iconFont} />),
+          headerRight: () => (<IconFont name={'i-dianpu'} color={isLight ? '#4253ff' : 'white'} size={20} style={styles(isLight).iconFont} />),
         }} />
         <Tab.Screen name="Account" component={Profile}
           options={{
-            headerRight: () => (<IconFont name={'i-shouye'} color={isLight ? '#4253ff' : 'white'} size={20} style={styles.iconFont} />),
+            headerRight: () => (<IconFont name={'i-shouye'} color={isLight ? '#4253ff' : 'white'} size={20} style={styles(isLight).iconFont} />),
           }}
         />
         <Tab.Screen name="Categorie" component={Categories} options={{
-          headerRight: () => (<IconFont name={'i-search'} color={isLight ? '#4253ff' : 'white'} size={20} style={styles.iconFont} />),
+          headerRight: () => (<IconFont name={'i-search'} color={isLight ? '#4253ff' : 'white'} size={20} style={styles(isLight).iconFont} />),
         }} />
         <Tab.Screen name="Maps" component={Maps} options={{
-          headerRight: () => (<IconFont name={'i-dingwei'} color={isLight ? '#4253ff' : 'white'} size={20} style={styles.iconFont} />),
+          headerRight: () => (<IconFont name={'i-dingwei'} color={isLight ? '#4253ff' : 'white'} size={20} style={styles(isLight).iconFont} />),
         }} />
       </Tab.Navigator>
       <TabBar navigation={navigation} isLight={isLight} />
@@ -64,10 +63,10 @@ const MyTabs = (props: any) => {
 };
 export default MyTabs;
 
-const styles = StyleSheet.create({
+const styles = (isLight: any) => StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4253ff",
+    backgroundColor: isLight ? '#4253ff' : '#A48E5C',
     justifyContent: 'flex-end',
   },
   icon: {

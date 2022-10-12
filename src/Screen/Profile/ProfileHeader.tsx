@@ -21,7 +21,7 @@ const ProfileHeader = ({ handleClick, ...props }: any) => {
         surname,
         email,
       }).then(() => {
-        Alert.alert("Informazioni aggiornate")
+        Alert.alert('Informazioni aggiornate');
       });
     }
     setEdit(!edit);
@@ -75,10 +75,10 @@ const ProfileHeader = ({ handleClick, ...props }: any) => {
 
       <Button
         size="large"
-        status="info"
+        status="primary"
         appearance="outline"
         accessoryRight={<IconFont name={'i-bianji'} size={25} color={'#4253ff'} />}
-        onPress={() => { updateInfo() }} style={[styles.input, { borderRadius: 10 }]}>{edit ? 'Modifica' : 'Aggiorna'}
+        onPress={() => updateInfo()} style={[styles.input, { borderRadius: 10 }]}>{edit ? 'Modifica' : 'Aggiorna'}
       </Button>
     </View>
   );

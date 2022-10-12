@@ -6,7 +6,8 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import store from './src/store/store';
 import { Provider } from 'react-redux';
 import MainNavigator from './src/Navigator/MainNavigator';
-import { default as theme } from './theme.json';
+import { default as lightTheme } from './themeLight.json';
+import { default as darkTheme } from './themeDark.json';
 
 const App = () => {
   const [light, setToggle] = useState(true);
@@ -19,7 +20,7 @@ const App = () => {
     <Provider store={store}>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <IconRegistry icons={EvaIconsPack} />
-        <ApplicationProvider {...eva} customMapping={{ ...eva.mapping }} theme={light ? eva.light : { ...eva.dark, ...theme }}>
+        <ApplicationProvider {...eva} customMapping={{ ...eva.mapping }} theme={light ?  { ...eva.light, ...lightTheme } : { ...eva.dark, ...darkTheme }}>
           <MainNavigator toggleTheme={toggleTheme} light={light} />
         </ApplicationProvider>
       </GestureHandlerRootView>

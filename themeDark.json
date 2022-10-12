@@ -3,8 +3,8 @@
     "color-primary-200": "#F1E3FE",
     "color-primary-300": "#E8D4FE",
     "color-primary-400": "#E0C9FD",
-    "color-primary-500": "#D3B8FD",
-    "color-primary-600": "#A386D9",
+    "color-primary-500": "#000000", //Button
+    "color-primary-600": "#121212", //Button on click
     "color-primary-700": "#785CB6",
     "color-primary-800": "#523A92",
     "color-primary-900": "#372379",
@@ -44,7 +44,6 @@
     "color-danger-700": "#A70F60",
     "color-danger-800": "#870958",
     "color-danger-900": "#6F0553",
-
     "color-basic-100": "#FFFFFF",
     "color-basic-200": "#F5F5F5",
     "color-basic-300": "#F5F5F5",
@@ -52,10 +51,11 @@
     "color-basic-500": "#B3B3B3",
     "color-basic-600": "#808080",
     "color-basic-700": "#4A4A4A",
-    "color-basic-800": "#383838",
-    "color-basic-900": "#292929",
-    "color-basic-1000": "#1F1F1F",
-    "color-basic-1100": "#141414"
-
-
+    "color-basic-800": "#181a20", //Layout lv 1 rgba(255,255,255,0.05)
+    "color-basic-900": "#1e2129", //Layout lv 2
+    "color-basic-1000": "#343645", //Layout lv 3
+    "color-basic-1100": "rgba(255,255,255,0.05)", //Layout lv 4
+    "tab-bar-not-selected": "#f2f2f2",
+    "tab-bar-selected": "$color-primary-300",
+    "tab-indicator": "$color-primary-300"
 }

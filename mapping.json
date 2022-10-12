@@ -13,6 +13,36 @@
                     }
                 }
             }
+        },
+        "Tab": {
+            "appearances": {
+                "default": {
+                    "mapping": {
+                        "textColor": "tab-bar-not-selected",
+                        "iconTintColor": "text-hint-color",
+                        "state": {
+                            "hover": {
+                                "textColor": "text-primary-hover-color",
+                                "iconTintColor": "text-primary-hover-color"
+                            },
+                            "selected": {
+                                "textColor": "tab-bar-selected",
+                                "iconTintColor": "tab-bar-selected"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "TabBar": {
+            "appearances": {
+                "default": {
+                    "mapping": {
+                        "backgroundColor": "background-basic-color-1",
+                        "indicatorBackgroundColor": "tab-indicator"
+                    }
+                }
+            }
         }
     }
 }

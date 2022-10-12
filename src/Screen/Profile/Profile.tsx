@@ -21,7 +21,7 @@ const Profile = () => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <Layout style={{ flex: 1 }}>
+      <Layout level='1' style={{ flex: 1 }}>
         <ProfileHeader user={user} avatar={avatar} handleClick={handleClick} />
       </Layout>
       <ProfileDrawer setStatus={setStatus} status={status} avatar={avatar} bottomSheetRef={bottomSheetRef} close={close} />

@@ -61,7 +61,7 @@ export default class StaticTabBar extends React.PureComponent {
                 React.createElement(React.Fragment, Object.assign({}, { key }),
                     React.createElement(TouchableWithoutFeedback, { onPress: () => onPress(key, route) },
                         React.createElement(Animated.View, { style: [styles(isLight).tab, { opacity }] },
-                            <IconFont name={icon} size={25} color={!isLight ? "white" : "black"} />)),
+                            <IconFont name={icon} size={25} color={!isLight ? 'white' : 'black'} />)),
                     React.createElement(
                         Animated.View, {
                         style: {
@@ -77,7 +77,7 @@ export default class StaticTabBar extends React.PureComponent {
                         },
                     },
                         React.createElement(View, { style: styles(isLight).activeIcon },
-                            <IconFont name={icon} size={25} color={!isLight ? "white" : "black"} />
+                            <IconFont name={icon} size={25} color={!isLight ? 'white' : 'black'} />
                         ))
                 )
             );
@@ -95,7 +95,7 @@ const styles = (isLight: boolean) => StyleSheet.create({
         height: 64,
     },
     activeIcon: {
-        backgroundColor: isLight ? 'white' : "black",
+        backgroundColor: isLight ? 'white' : 'black',
         justifyContent: 'center',
         alignItems: 'center',
         width: 60,

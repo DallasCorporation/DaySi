@@ -10,7 +10,7 @@ const MainNavigator = ({ toggleTheme, light }: any) => {
     console.log(logged)
     return (
         <NavigationContainer>
-            {logged ? <DrawerNavigator toggleTheme={toggleTheme} light={light} /> : <LoginNavigation />}
+            {!logged ? <DrawerNavigator toggleTheme={toggleTheme} light={light} /> : <LoginNavigation />}
         </NavigationContainer>
     );
 };

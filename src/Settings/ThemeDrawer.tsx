@@ -70,7 +70,7 @@ const ThemeDrawer = ({ toggleTheme, status, setStatus, bottomSheetRef, close }: 
 
                     <View style={{ flexDirection: 'row', }}>
                         <Text style={{ fontSize: 100 }}>🌞</Text>
-                        <Toggle checked={activeChecked} onChange={(status) => updateTheme(!status)} />
+                        <Toggle status='warning' checked={activeChecked} onChange={(status) => updateTheme(!status)} />
                         <Text style={{ fontSize: 100 }}>🌚</Text>
                     </View>
                 </Layout>

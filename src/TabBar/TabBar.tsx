@@ -30,7 +30,6 @@ const tabs = [
     },
 ];
 const tabWidth = width / tabs.length;
-const backgroundColor = 'white';
 const getPath = () => {
     const left = shape.line<any>().x((d: { x: number; }) => d.x).y((d: { y: number; }) => d.y)([
         { x: 0, y: 0 },

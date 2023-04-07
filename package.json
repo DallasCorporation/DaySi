@@ -28,7 +28,7 @@
         "escape-string-regexp": "^5.0.0",
         "react": "^17.0.2",
         "react-dom": "^18.2.0",
-        "react-native": "0.67.2",
+        "react-native": "0.71.6",
         "react-native-exit-app": "^1.1.0",
         "react-native-gesture-handler": "^2.6.2",
         "react-native-linear-gradient": "^2.6.2",
